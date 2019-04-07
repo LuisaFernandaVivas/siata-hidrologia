@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 
 class PostInline extends Component {
   render() {
-      const {title} = this.props
-      const titleABC = "asdf" // lo mismo que el anterior
+      const {post} = this.props
+      const {elClass} = this.props
+      const showContent = elClass === 'card' ? 'd-block' : 'd-none'
+
     return (
       <div>
-        <h1>Posts {title} - {titleABC}</h1>
+      {post !== undefined ?
+        <div className={elClass}>
+          <h1>{post.title}</h1>
+          <p className = {showContent}>{post.content}</p>
+        </div>
+      : ""}
       </div>
     );
   }
