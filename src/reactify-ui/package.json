@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "moment": "^2.22.2",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "react-cookies": "^0.1.0",
+    "react-dom": "^16.4.0",
+    "react-router-dom": "^4.2.2",
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
-    "react-scripts": "1.1.4",
     "copyfiles": "^2.0.0",
+    "react-autocomplete-cli": "0.0.3",
+    "react-scripts": "1.1.4",
     "renamer": "^0.7.0"
   },
   "scripts": {
