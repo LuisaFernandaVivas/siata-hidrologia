@@ -23,5 +23,8 @@ urlpatterns = [
     path('walking', TemplateView.as_view(template_name='walking.html')),
     re_path(r'^posts/', TemplateView.as_view(template_name='react.html')),
     path('admin/', admin.site.urls),
-    path('api/posts/', include('posts.urls'))
+    path('api/posts/', include('posts.urls')),
+    path('api/basin/', include('meta.urls'))
+
+
 ]
