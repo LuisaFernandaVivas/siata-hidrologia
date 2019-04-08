@@ -5,12 +5,14 @@ class PostInline extends Component {
       const {post} = this.props
       const {elClass} = this.props
       const showContent = elClass === 'card' ? 'd-block' : 'd-none'
+      const {click} = this.props
+
 
     return (
       <div>
       {post !== undefined ?
-        <div className={elClass}>
-          <h1>{post.title}</h1>
+        <div onClick={click} className={elClass} id={post.slug}>
+          <a><h1>{post.title}</h1></a>
           <p className = {showContent}>{post.content}</p>
         </div>
       : ""}

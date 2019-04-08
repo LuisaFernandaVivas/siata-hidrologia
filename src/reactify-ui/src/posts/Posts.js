@@ -8,11 +8,14 @@ class Posts extends Component {
   constructor(props){
     super(props)
     this.tooglePostListClass = this.tooglePostListClass.bind(this)
+    this.toogleItem = this.toogleItem.bind(this)
   }
       state = {
         posts : [],
         postListClass : "card",
+        currentItem : "nuevo"
       }
+
   loadPosts(){ //http request
       const endpoint = '/api/posts'
       let thisComp = this
@@ -27,7 +30,6 @@ class Posts extends Component {
       .then(function(response){
           return response.json()
       }).then(function(responseData){
-          console.log(responseData.results)
             thisComp.setState({
                 posts: responseData.results
                 })
@@ -35,6 +37,8 @@ class Posts extends Component {
           console.log("error",error)
       })
     }
+
+
   tooglePostListClass(event){
     event.preventDefault()
     let currentListClass = this.state.postListClass
@@ -49,10 +53,18 @@ class Posts extends Component {
     }
   }
 
+  toogleItem(event){
+    event.preventDefault()
+    this.setState({
+      currentItem : event.target.offsetParent.id
+    })
+  }
+
   componentDidMount(){ //{
     this.setState({
         posts: [],
-        postListClass : "card"
+        postListClass : "card",
+        currentItem:"nuevo"
     })
     this.loadPosts()
   }
@@ -60,14 +72,17 @@ class Posts extends Component {
   render() {
       const {posts} = this.state
       const {postListClass} = this.state
-      console.log(postListClass)
+      const {currentItem} = this.state
+      const item = posts.find( item => item.slug === currentItem )
+      console.log(item)
     return (
       <div>
         <h1> Title </h1>
+        <h1> {currentItem} </h1>
         <button onClick = {this.tooglePostListClass}> Toogle Class </button>
         {posts.length > 0 ? posts.map((postItem,index)=>{
               return (
-                <PostInline post={postItem} elClass={postListClass}/>
+                <PostInline post={postItem} elClass={postListClass} click={this.toogleItem}/>
             )
         }) : <p> No Post Found </p>}
       </div>
