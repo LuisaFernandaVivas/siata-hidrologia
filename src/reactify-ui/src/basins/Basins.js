@@ -2,22 +2,22 @@ import React, { Component } from 'react';
 import 'whatwg-fetch'
 import cookie from 'react-cookies'
 
-import PostInline from './PostInline';
+import BasinInline from './BasinInline';
 
-class Posts extends Component {
+class Basins extends Component {
   constructor(props){
     super(props)
-    this.tooglePostListClass = this.tooglePostListClass.bind(this)
+    this.toogleBasinListClass = this.toogleBasinListClass.bind(this)
     this.toogleItem = this.toogleItem.bind(this)
   }
       state = {
-        posts : [],
-        postListClass : "card",
-        currentItem : "nuevo"
+        basins : [],
+        basinListClass : "card",
+        currentItem : "puente33"
       }
 
-  loadPosts(){ //http request
-      const endpoint = '/api/posts'
+  loadbasins(){ //http request
+      const endpoint = '/api/basin'
       let thisComp = this
       let lookupOptions = {
           method: "GET",
@@ -31,24 +31,25 @@ class Posts extends Component {
           return response.json()
       }).then(function(responseData){
             thisComp.setState({
-                posts: responseData.results
+                basins: responseData
                 })
+            console.log(responseData)
       }).catch(function(error){
           console.log("error",error)
       })
     }
 
 
-  tooglePostListClass(event){
+  toogleBasinListClass(event){
     event.preventDefault()
-    let currentListClass = this.state.postListClass
+    let currentListClass = this.state.basinListClass
     if (currentListClass === ""){
       this.setState({
-        postListClass:"card",
+        basinListClass:"card",
       })
     } else {
         this.setState({
-          postListClass : "",
+          basinListClass : "",
         })
     }
   }
@@ -62,32 +63,31 @@ class Posts extends Component {
 
   componentDidMount(){ //{
     this.setState({
-        posts: [],
-        postListClass : "card",
-        currentItem:"nuevo"
+        basins: [],
+        basinListClass : "card",
+        currentItem:"puente33"
     })
-    this.loadPosts()
+    this.loadbasins()
   }
 
   render() {
-      const {posts} = this.state
-      const {postListClass} = this.state
+      const {basins} = this.state
+      console.log(basins)
+      const {basinListClass} = this.state
       const {currentItem} = this.state
-      const item = posts.find( item => item.slug === currentItem )
-      console.log(item)
+      const item = basins.find( item => item.slug === currentItem )
     return (
       <div>
-        <h1> Title </h1>
         <h1> {currentItem} </h1>
-        <button onClick = {this.tooglePostListClass}> Toogle Class </button>
-        {posts.length > 0 ? posts.map((postItem,index)=>{
+        <button onClick = {this.toogleBasinListClass}> Presione </button>
+        {basins.length > 0 ? basins.map((basinItem,index)=>{
               return (
-                <PostInline post={postItem} elClass={postListClass} click={this.toogleItem}/>
+                <BasinInline basin={basinItem} elClass={basinListClass} click={this.toogleItem}/>
             )
-        }) : <p> No Post Found </p>}
+        }) : <p> No basin Found </p>}
       </div>
     );
   }
 }
 
-export default Posts;
+export default Basins;

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-import Posts from './posts/Posts.js';
+import Basins from './basins/Basins.js';
+
 
 class App extends Component {
   render() {
     return (
-      <Posts />
+      <Basins />
     );
   }
 }
