@@ -16,6 +16,23 @@ Including another URLconf
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.urls import path, include, re_path
+from django.conf.urls import url
+
+def send_file(request):
+
+  import os, tempfile, zipfile
+  from wsgiref.util import FileWrapper
+  from django.conf import settings
+  import mimetypes
+
+  filename     = "C:\ex2.csv" # Select your file here.
+  download_name ="example.csv"
+  wrapper      = FileWrapper(open(filename))
+  content_type = mimetypes.guess_type(filename)[0]
+  response     = HttpResponse(wrapper,content_type=content_type)
+  response['Content-Length']      = os.path.getsize(filename)
+  response['Content-Disposition'] = "attachment; filename=%s"%download_name
+  return response
 
 
 urlpatterns = [
@@ -24,7 +41,6 @@ urlpatterns = [
     re_path(r'^posts/', TemplateView.as_view(template_name='react.html')),
     path('admin/', admin.site.urls),
     path('api/posts/', include('posts.urls')),
-    path('api/basin/', include('meta.urls'))
-
-
+    path('api/basin/', include('meta.urls')),
+    url(r'^static/data.csv', send_file)
 ]
