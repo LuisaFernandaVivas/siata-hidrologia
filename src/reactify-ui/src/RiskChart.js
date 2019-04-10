@@ -25,7 +25,7 @@ class RiskChart extends Component {
     console.log("algo");
     //Read the dataf
 //    d3.csv("static/data.csv", function(data) {
-    d3.csv("http://127.0.0.1:8000/static/sample.csv", function(d) {
+    d3.csv("static/data.csv", function(d) {
 
       return {
         name:d.name,
@@ -102,7 +102,7 @@ class RiskChart extends Component {
       }
 
 
-      var div = d3.select("#my_dataviz").append("div")   // declare the properties for the div used for the tooltips
+      var div = d3.select("#heatmap").append("div")   // declare the properties for the div used for the tooltips
                 .attr("class", "tooltip")               // apply the 'tooltip' class
                 .style("opacity", 0);                   // set the opacity to nil
 
@@ -127,6 +127,7 @@ class RiskChart extends Component {
                         .duration(200)
                         .style("opacity", 0.90);
                     var string = "<img src= " + d.path +  " width= '400' height='500' />";
+                    console.log(string)
                     div .html(string) //this will add the image on mouseover
                         .style("left", (d3.event.pageX + 0) + "px")
                         .style("top", (d3.event.pageY + 0) + "px")
