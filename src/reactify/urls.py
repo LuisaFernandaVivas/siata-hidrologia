@@ -26,13 +26,14 @@ def send_file(request):
   import mimetypes
 
   filename     = "C:\ex2.csv" # Select your file here.
-  download_name ="example.csv"
+  download_name ="data.csv"
   wrapper      = FileWrapper(open(filename))
   content_type = mimetypes.guess_type(filename)[0]
   response     = HttpResponse(wrapper,content_type=content_type)
   response['Content-Length']      = os.path.getsize(filename)
   response['Content-Disposition'] = "attachment; filename=%s"%download_name
   return response
+
 
 
 urlpatterns = [
@@ -42,5 +43,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/posts/', include('posts.urls')),
     path('api/basin/', include('meta.urls')),
-    url(r'^static/data.csv', send_file)
+    path('static/data.csv', send_file)
 ]

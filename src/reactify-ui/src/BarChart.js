@@ -10,8 +10,11 @@ class BarChart extends Component {
   }
 
   drawChart() {
-    const data = this.props.data;;
+    const data = [23,21];
     console.log(data)
+    d3.csv("static/data.csv", function(data) {
+      console.log(data)
+    })
     const svg = d3.select("body").append("svg")
       .attr("width", this.props.width)
       .attr("height", this.props.height);

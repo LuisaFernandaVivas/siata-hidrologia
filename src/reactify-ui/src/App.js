@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import BarChart from './BarChart.js';
+import RiskChart from './RiskChart.js';
 
 class App extends Component {
 
@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <BarChart data={this.state.data} width={this.state.width} height={this.state.height} />
+        <RiskChart />
       </div>
     );
   }
