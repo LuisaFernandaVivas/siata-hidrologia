@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import RiskChart from './RiskChart.js';
+import BasinManager from './basins/BasinManager.js';
 
 class App extends Component {
 
@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <RiskChart />
+        <BasinManager />
       </div>
     );
   }

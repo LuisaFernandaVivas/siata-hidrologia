@@ -33,7 +33,6 @@ class Basins extends Component {
             thisComp.setState({
                 basins: responseData
                 })
-            console.log(responseData)
       }).catch(function(error){
           console.log("error",error)
       })
@@ -72,10 +71,10 @@ class Basins extends Component {
 
   render() {
       const {basins} = this.state
-      console.log(basins)
       const {basinListClass} = this.state
       const {currentItem} = this.state
       const item = basins.find( item => item.slug === currentItem )
+      console.log(item)
     return (
       <div>
         <h1> {currentItem} </h1>

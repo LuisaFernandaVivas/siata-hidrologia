@@ -7,7 +7,6 @@ class BasinInline extends Component {
       const showContent = elClass === 'card' ? 'd-block' : 'd-none'
       const {click} = this.props
 
-
     return (
       <div>
       {basin !== undefined ?

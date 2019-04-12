@@ -22,7 +22,6 @@ class RiskChart extends Component {
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-    console.log("algo");
     //Read the dataf
 //    d3.csv("static/data.csv", function(data) {
     d3.csv("static/data.csv", function(d) {
@@ -127,7 +126,6 @@ class RiskChart extends Component {
                         .duration(200)
                         .style("opacity", 0.90);
                     var string = "<img src= " + d.path +  " width= '400' height='500' />";
-                    console.log(string)
                     div .html(string) //this will add the image on mouseover
                         .style("left", (d3.event.pageX + 0) + "px")
                         .style("top", (d3.event.pageY + 0) + "px")
