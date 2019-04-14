@@ -11,29 +11,36 @@ class BasinManager extends Component {
   }
       state = {
         show : true,
-        item : {}
+        item : {},
+        data : {}
       }
 
-  toogleItem(value){
+  toogleItem(value,filter){
     this.setState({
       item : value,
-      show : false
+      show : false,
+      data : filter
       })
   }
 
   componentDidMount(){
     this.setState({
         show: true,
-        item:{}
+        item:{},
+        data:{}
     })
   }
 
   render() {
       const {show} = this.state
       const {item} = this.state
-      console.log(item)
+      const {data} = this.state
+      console.log(data)
     return (
-        <BasinChart show = {show} click={this.toogleItem}/>
+      <div>
+      <h1>{item.name}</h1>
+      <BasinChart show = {show} click={this.toogleItem}/>
+      </div>
     );
   }
 }

@@ -27,7 +27,10 @@ class BasinChart extends Component {
             hour:d.hour,
             color:d.color,
             location:d.location,
-            path:d.path
+            path:d.path,
+            water_surface_velocity:d.water_surface_velocity,
+            water_level:d.water_level,
+            radar_rain:d.radar_rain,
           };
         }).then (function (data) {
           var myGroups = d3.map(data, function(d){return d.hour;}).keys()
@@ -119,7 +122,7 @@ class BasinChart extends Component {
                       })
             .on("mousemove", mousemove)
             .on("mouseleave", mouseleave)
-            .on("click", function(d) { return click(d);})
+            .on("click", function(d) { return click(d,data.filter(function(f){return f.name == d.name;}));})
       })
     }
 
