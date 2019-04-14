@@ -14,14 +14,14 @@ class BasinManager extends Component {
         item : {}
       }
 
-  toogleItem(event){
-    event.preventDefault()
+  toogleItem(value){
     this.setState({
-      item : event.target
-    })
+      item : value,
+      show : false
+      })
   }
 
-  componentDidMount(){ //{
+  componentDidMount(){
     this.setState({
         show: true,
         item:{}
@@ -33,9 +33,7 @@ class BasinManager extends Component {
       const {item} = this.state
       console.log(item)
     return (
-      <div>
-        <BasinChart click={this.toogleItem}/>
-      </div>
+        <BasinChart show = {show} click={this.toogleItem}/>
     );
   }
 }
