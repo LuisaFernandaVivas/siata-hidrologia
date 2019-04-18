@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch'
 import cookie from 'react-cookies'
-
 import BasinChart from './BasinChart';
+import TimeChart from './TimeChart';
 
 class BasinManager extends Component {
   constructor(props){
@@ -35,10 +35,9 @@ class BasinManager extends Component {
       const {show} = this.state
       const {item} = this.state
       const {data} = this.state
-      console.log(data)
     return (
       <div>
-      <h1>{item.name}</h1>
+      <TimeChart data = {data} parameter = {'water_level'}/>
       <BasinChart show = {show} click={this.toogleItem}/>
       </div>
     );

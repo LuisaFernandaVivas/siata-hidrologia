@@ -24,6 +24,7 @@ class BasinChart extends Component {
         d3.csv("static/data.csv", function(d) {
           return {
             name:d.name,
+            date:d.date,
             hour:d.hour,
             color:d.color,
             location:d.location,
@@ -128,6 +129,7 @@ class BasinChart extends Component {
 
     return (
         <div id="heatmap" >
+        ey you
         </div>
     );
   }
