@@ -33,7 +33,7 @@ class TimeChart extends Component {
     var maxDate = data[30]["date"]
     var maxValue = Math.max.apply(Math, data.map(function(o) { return o[parameter]; }))
     var xScale = d3.scaleTime().domain([new Date(minDate),new Date(maxDate)]).range([0,width]);
-    var yScale = d3.scaleLinear().domain([0,maxValue]).range([height,0]);
+    var yScale = d3.scaleLinear().domain([0,maxValue*1.5]).range([height,0]);
     var lineGenerator = d3.line()
     	.x(function(d, i) {
           return xScale(d.date);
@@ -56,8 +56,34 @@ class TimeChart extends Component {
 
     svg.append("path")
       .attr("d",line)
-      .style("stroke", "red")
+      .style("stroke", "#4C90CD")
+      .style("stroke-width","2px")
       .style("fill","none");
+
+    var areaGenerator = d3.area()
+      .x(function(d) { return xScale(d.date); })
+      .y0(height)
+      .y1(function(d) { return yScale(d[parameter]); });
+
+    var areaGenerator = d3.area()
+      .x(function(d, i) {
+          return xScale(d.date);
+        })
+      .y0(height)
+      .y1(function(d) {
+          return yScale(d[parameter]);
+        })
+      .defined(function(d) {
+          return (typeof d[parameter] != 'undefined' && d[parameter]);
+        });
+
+    var area = areaGenerator(data);
+
+    svg.append("path")
+       .attr("class", "area")
+       .attr("d", area)
+       .style("fill","#4C90CD")
+       .style("opacity","0.5");
 
     var axG = svg.append("g")
          .attr("class", "x axis")
