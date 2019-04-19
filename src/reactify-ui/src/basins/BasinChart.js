@@ -129,7 +129,6 @@ class BasinChart extends Component {
 
     return (
         <div id="heatmap" >
-        ey you
         </div>
     );
   }

@@ -37,7 +37,8 @@ class BasinManager extends Component {
       const {data} = this.state
     return (
       <div>
-      <TimeChart data = {data} parameter = {'water_level'}/>
+      <TimeChart data = {data} parameter = {'water_level'} color = {"#4C90CD"}/>
+      <TimeChart data = {data} parameter = {'radar_rain'} color = {"green"}/>
       <BasinChart show = {show} click={this.toogleItem}/>
       </div>
     );

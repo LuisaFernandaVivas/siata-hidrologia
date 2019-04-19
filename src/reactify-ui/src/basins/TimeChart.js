@@ -7,10 +7,10 @@ class TimeChart extends Component {
   render() {
     const {data} = this.props
     const {parameter} = this.props
-    // Define margins, dimensions, and some line colors
-    const margin = {top: 40, right: 120, bottom: 30, left: 40};
-    const width = 1400 - margin.left - margin.right;
-    const height = 400 - margin.top - margin.bottom;
+    const {color} = this.props
+    const margin = {top: 10, right: 120, bottom: 30, left: 10};
+    const width = 600 - margin.left - margin.right;
+    const height = 200 - margin.top - margin.bottom;
 
     function isEmpty(obj) {
         for(var key in obj) {
@@ -48,7 +48,9 @@ class TimeChart extends Component {
     var line = lineGenerator(data);
     var x_axis = d3.axisBottom().scale(xScale);
     var y_axis = d3.axisLeft().scale(yScale);
-    d3.select("#timechart").selectAll("*").remove();
+    if (parameter == 'water_level'){
+      d3.select("#timechart").selectAll("*").remove();
+    }
     var svg = d3.select("#timechart")
       .append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -56,7 +58,8 @@ class TimeChart extends Component {
 
     svg.append("path")
       .attr("d",line)
-      .style("stroke", "#4C90CD")
+      .attr("transform", "translate(30,0)")
+      .style("stroke", color)
       .style("stroke-width","2px")
       .style("fill","none");
 
@@ -82,17 +85,18 @@ class TimeChart extends Component {
     svg.append("path")
        .attr("class", "area")
        .attr("d", area)
-       .style("fill","#4C90CD")
+       .attr("transform", "translate(30,0)")
+       .style("fill",color)
        .style("opacity","0.5");
 
     var axG = svg.append("g")
          .attr("class", "x axis")
-         .attr("transform", "translate(0," + height + ")")
+         .attr("transform", "translate(30," + height + ")")
          .call(x_axis);
 
     svg.append("g")
       .attr("class", "y axis")
-     	.attr("transform", "translate(15,0)")
+     	.attr("transform", "translate(30,0)")
       .call(y_axis);
     }
 
