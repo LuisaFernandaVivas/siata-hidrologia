@@ -36,11 +36,15 @@ class TimeChart extends Component {
     var yScale = d3.scaleLinear().domain([0,maxValue]).range([height,0]);
     var lineGenerator = d3.line()
     	.x(function(d, i) {
-        return xScale(d.date);
-    	})
+          return xScale(d.date);
+        })
     	.y(function(d) {
-    		return yScale(d[parameter]);
-    	});
+          return yScale(d[parameter]);
+        })
+      .defined(function(d) {
+          return (typeof d[parameter] != 'undefined' && d[parameter]);
+        });
+
     var line = lineGenerator(data);
     var x_axis = d3.axisBottom().scale(xScale);
     var y_axis = d3.axisLeft().scale(yScale);
