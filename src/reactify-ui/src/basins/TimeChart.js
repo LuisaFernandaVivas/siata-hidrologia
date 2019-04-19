@@ -8,9 +8,9 @@ class TimeChart extends Component {
     const {data} = this.props
     const {parameter} = this.props
     const {color} = this.props
-    const margin = {top: 10, right: 10, bottom: 30, left: 200};
-    const width = 800 - margin.left - margin.right;
-    const height = 200 - margin.top - margin.bottom;
+    const margin = {top: 10, right:10 , bottom: 20, left: 10};
+    const width = 380 - margin.left - margin.right;
+    const height = 150 - margin.top - margin.bottom;
 
     function isEmpty(obj) {
         for(var key in obj) {
@@ -48,10 +48,8 @@ class TimeChart extends Component {
     var line = lineGenerator(data);
     var x_axis = d3.axisBottom().scale(xScale);
     var y_axis = d3.axisLeft().scale(yScale);
-    if (parameter == 'water_level'){
-      d3.select("#timechart").selectAll("*").remove();
-    }
-    var svg = d3.select("#timechart")
+    d3.select("#"+parameter).selectAll("*").remove();
+    var svg = d3.select("#"+parameter)
       .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom);
@@ -100,11 +98,21 @@ class TimeChart extends Component {
       .call(y_axis);
     }
 
-    return (
-        <div id="timechart" className="card"></div>
+  return (
+    <div className="col-sm-5">
+      <div className="chart-wrapper">
+        <div className="chart-title">
+          {parameter}
+        </div>
+        <div className="chart-stage">
+          <div id={parameter}></div>
+        </div>
+      </div>
+    </div>
     );
   }
 }
+
 
 
 export default TimeChart;
