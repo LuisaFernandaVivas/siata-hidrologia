@@ -9,8 +9,8 @@ class BasinChart extends Component {
       const {click} = this.props
 
       if (show == true) {
-        var margin = {top: 50, right: 30, bottom: 0, left: 380},
-          width = 1400 - margin.left - margin.right,
+        var margin = {top: 50, right: 60, bottom: 0, left: 300},
+          width = 1300 - margin.left - margin.right,
           height = 2200 - margin.top - margin.bottom;
 
         var svg = d3.select("#heatmap")
@@ -44,7 +44,7 @@ class BasinChart extends Component {
             ;
 
           svg.append("g")
-            .style("font-size", 20)
+            .style("font-size", 15)
             .style("font-weight","bold")
             .attr("transform", "translate(0,-30)")
             .call(d3.axisBottom(x))
@@ -61,7 +61,7 @@ class BasinChart extends Component {
             .padding(0.05);
 
           svg.append("g")
-            .style("font-size", 20)
+            .style("font-size", 15)
             .style("font-weight","bold")
             .call(d3.axisLeft(y).tickSize(0))
             .select(".domain").remove()
@@ -128,7 +128,8 @@ class BasinChart extends Component {
     }
 
     return (
-        <div id="heatmap" >
+        <div id="heatmap" className="card">
+
         </div>
     );
   }

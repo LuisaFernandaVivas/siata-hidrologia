@@ -8,8 +8,8 @@ class TimeChart extends Component {
     const {data} = this.props
     const {parameter} = this.props
     const {color} = this.props
-    const margin = {top: 10, right: 120, bottom: 30, left: 10};
-    const width = 600 - margin.left - margin.right;
+    const margin = {top: 10, right: 10, bottom: 30, left: 200};
+    const width = 800 - margin.left - margin.right;
     const height = 200 - margin.top - margin.bottom;
 
     function isEmpty(obj) {
@@ -58,7 +58,7 @@ class TimeChart extends Component {
 
     svg.append("path")
       .attr("d",line)
-      .attr("transform", "translate(30,0)")
+      .attr("transform", "translate(60,0)")
       .style("stroke", color)
       .style("stroke-width","2px")
       .style("fill","none");
@@ -85,25 +85,26 @@ class TimeChart extends Component {
     svg.append("path")
        .attr("class", "area")
        .attr("d", area)
-       .attr("transform", "translate(30,0)")
+       .attr("transform", "translate(60,0)")
        .style("fill",color)
        .style("opacity","0.5");
 
     var axG = svg.append("g")
          .attr("class", "x axis")
-         .attr("transform", "translate(30," + height + ")")
+         .attr("transform", "translate(60," + height + ")")
          .call(x_axis);
 
     svg.append("g")
       .attr("class", "y axis")
-     	.attr("transform", "translate(30,0)")
+     	.attr("transform", "translate(60,0)")
       .call(y_axis);
     }
 
     return (
-        <div id="timechart" ></div>
+        <div id="timechart" className="card"></div>
     );
   }
 }
+
 
 export default TimeChart;
