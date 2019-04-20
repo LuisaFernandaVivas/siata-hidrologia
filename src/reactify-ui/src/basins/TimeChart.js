@@ -11,7 +11,6 @@ class TimeChart extends Component {
     const margin = {top: 10, right:10 , bottom: 20, left: 10};
     const width = 380 - margin.left - margin.right;
     const height = 150 - margin.top - margin.bottom;
-
     function isEmpty(obj) {
         for(var key in obj) {
             if(obj.hasOwnProperty(key))
@@ -99,7 +98,7 @@ class TimeChart extends Component {
     }
 
   return (
-    <div className="col-sm-5">
+    <div>
       <div className="chart-wrapper">
         <div className="chart-title">
           {parameter}
@@ -110,6 +109,7 @@ class TimeChart extends Component {
       </div>
     </div>
     );
+
   }
 }
 
