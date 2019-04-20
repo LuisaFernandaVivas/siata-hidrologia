@@ -4,6 +4,7 @@ import cookie from 'react-cookies'
 import BasinChart from './BasinChart';
 import TimeChart from './TimeChart';
 import PictureChart from './PictureChart';
+import MapChart from './MapChart';
 
 class BasinManager extends Component {
   constructor(props){
@@ -48,6 +49,18 @@ class BasinManager extends Component {
               <PictureChart path={item.path}/>
               <PictureChart path={item.path}/>
               <PictureChart path={item.path}/>
+            </div>
+            <div id = 'container' className ='col-sm-4'>
+              <div className="chart-wrapper">
+                <div className="chart-title">
+                  Mapa
+                </div>
+                <div className="chart-stage">
+                  <div>
+                    <MapChart path={item.path}/>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div id='basinchart' className='col-sm-12'>

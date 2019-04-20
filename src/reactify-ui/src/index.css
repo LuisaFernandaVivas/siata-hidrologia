@@ -34,3 +34,8 @@ body {
   font-size: 12px;
   padding: 8px 10px 5px;
 }
+
+.leaflet-container {
+    height: 400px;
+    width: 350px;
+}
