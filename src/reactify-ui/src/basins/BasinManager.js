@@ -37,6 +37,7 @@ class BasinManager extends Component {
       const {show} = this.state
       const {item} = this.state
       const {data} = this.state
+      console.log(item)
     return (
       <div className="col-sm-12">
           <div className = "row">
@@ -46,9 +47,9 @@ class BasinManager extends Component {
               <TimeChart data = {data} parameter = {'water_surface_velocity'} color = {"grey"}/>
             </div>
             <div id = 'picturechart-row' className ='col-sm-3'>
-              <PictureChart path={item.path}/>
-              <PictureChart path={item.path}/>
-              <PictureChart path={item.path}/>
+              <PictureChart path={item.water_level_history_path} title={"Histórico de hidrógrafas"}/>
+              <PictureChart path={item.radar_rain_history_path} title={"Histórico de eventos de lluvia"}/>
+              <PictureChart path={item.statistical_model_path} title={"Modelo estadístico"}/>
             </div>
             <div id = 'container' className ='col-sm-4'>
               <div className="chart-wrapper">
@@ -57,7 +58,7 @@ class BasinManager extends Component {
                 </div>
                 <div className="chart-stage">
                   <div>
-                    <MapChart path={item.path}/>
+                    <MapChart item = {item}/>
                   </div>
                 </div>
               </div>

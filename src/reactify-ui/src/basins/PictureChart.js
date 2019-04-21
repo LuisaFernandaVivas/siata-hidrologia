@@ -6,13 +6,15 @@ import cookie from 'react-cookies'
 class PictureChart extends Component {
   render() {
   const {path} = this.props
+  const {title} = this.props
   const style = {height:150,
                  width:250};
+
   return (
     <div id='parent'>
       <div className="chart-wrapper">
         <div className="chart-title">
-          grafica
+          {title}
         </div>
         <div className="chart-stage">
           <div>

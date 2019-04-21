@@ -32,6 +32,13 @@ class BasinChart extends Component {
             water_surface_velocity:d.water_surface_velocity,
             water_level:d.water_level,
             radar_rain:d.radar_rain,
+            longitude:d.longitude,
+            latitude:d.latitude,
+            water_level_history_path:d.water_level_history_path,
+            radar_rain_history_path:d.radar_rain_history_path,
+            statistical_model_path:d.statistical_model_path,
+            picture_path:d.picture_path,
+            camera_path:d.camera_path,
           };
         }).then (function (data) {
           var myGroups = d3.map(data, function(d){return d.hour;}).keys()

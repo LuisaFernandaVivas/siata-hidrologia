@@ -3,11 +3,21 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
 class MapChart extends React.Component {
   render() {
+    const {item} = this.props
+    function ifisEmpty(obj) {
+        for(var key in obj) {
+            if(obj.hasOwnProperty(key))
+                return [obj.latitude,obj.longitude];
+        }
+        return [6.264,-75.603];
+    }
+    const center_location = ifisEmpty(item)
+    console.log(center_location)
     return (
       <LeafletMap
-        center={[50, 10]}
-        zoom={6}
-        maxZoom={10}
+        center={center_location}
+        zoom={12}
+        maxZoom={17}
         attributionControl={true}
         zoomControl={true}
         doubleClickZoom={true}
@@ -19,7 +29,7 @@ class MapChart extends React.Component {
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
         />
-        <Marker position={[50, 10]}>
+        <Marker position={center_location}>
           <Popup>
             Popup for any custom information.
           </Popup>

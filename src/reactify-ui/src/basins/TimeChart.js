@@ -11,6 +11,16 @@ class TimeChart extends Component {
     const margin = {top: 10, right:10 , bottom: 20, left: 10};
     const width = 380 - margin.left - margin.right;
     const height = 150 - margin.top - margin.bottom;
+    function toTitle(field) {
+      if (field == 'water_level'){
+        return 'Profundidad';
+      } else if (field == 'radar_rain') {
+        return 'Intensidad de lluvia promedio en la cuenca';
+      } else {
+        return 'Velocidad superficial';
+      }
+    }
+
     function isEmpty(obj) {
         for(var key in obj) {
             if(obj.hasOwnProperty(key))
@@ -20,7 +30,6 @@ class TimeChart extends Component {
     }
 
     if (isEmpty(data)){
-      console.log("is empty")
     } else {
     data.forEach(function(d){
         //console.log(typeof(d.date)); //check the type before it changes
@@ -101,7 +110,7 @@ class TimeChart extends Component {
     <div>
       <div className="chart-wrapper">
         <div className="chart-title">
-          {parameter}
+          {toTitle(parameter)}
         </div>
         <div className="chart-stage">
           <div id={parameter}></div>
