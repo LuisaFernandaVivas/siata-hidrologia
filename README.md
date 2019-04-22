@@ -7,12 +7,12 @@
 ### Recommended Start
 ```
 
-$ virtualenv -p python3 .
-$ source bin/activate
-(reactifydjango) $ cd src
-(reactifydjango) $ pip install -r requirements.txt
-(reactifydjango) $ cd reactify-ui
-(reactifydjango) $ npm install
+virtualenv -p python3 .
+source bin/activate
+cd src
+pip install -r requirements.txt
+cd reactify-ui
+npm install
 npm install react-cookies -save
 npm install whatwg-fetch --save
 npm install leaflet

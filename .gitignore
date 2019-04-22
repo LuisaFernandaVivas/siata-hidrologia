@@ -4,7 +4,7 @@ staticfiles/js/reactify-django.ui.js
 src/staticfiles/js/reactify-django.ui.js
 # Node.js related
 # See https://help.github.com/ignore-files/ for more about ignoring files.
-
+src/data/migrations/
 # dependencies
 node_modules/
 
