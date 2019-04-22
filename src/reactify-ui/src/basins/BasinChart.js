@@ -10,7 +10,7 @@ class BasinChart extends Component {
 
       if (show == true) {
         var margin = {top: 50, right: 60, bottom: 0, left: 300},
-          width = 1300 - margin.left - margin.right,
+          width = 1700 - margin.left - margin.right,
           height = 2200 - margin.top - margin.bottom;
 
         var svg = d3.select("#heatmap")
@@ -135,8 +135,16 @@ class BasinChart extends Component {
     }
 
     return (
-        <div id="heatmap" className="card">
-
+        <div id='parent'>
+          <div className="chart-wrapper">
+            <div className="chart-title">
+              Niveles de riesgo
+            </div>
+            <div className="chart-stage">
+              <div id = "heatmap">
+              </div>
+            </div>
+          </div>
         </div>
     );
   }
