@@ -9,7 +9,7 @@ class TimeChart extends Component {
     const {parameter} = this.props
     const {color} = this.props
     const margin = {top: 10, right:10 , bottom: 20, left: 10};
-    const width = 380 - margin.left - margin.right;
+    const width = 550 - margin.left - margin.right;
     const height = 150 - margin.top - margin.bottom;
     function toTitle(field) {
       if (field == 'water_level'){
