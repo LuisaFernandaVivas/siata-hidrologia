@@ -125,7 +125,7 @@ class BasinChart extends Component {
                         var string = "<img src= " + d.path +  " width= '400' height='500' />";
                         div .html(string) //this will add the image on mouseover
                             .style("left", (d3.event.pageX + 0) + "px")
-                            .style("top", (d3.event.pageY + 0) + "px")
+                            .style("top", (d3.event.pageY - 900) + "px")
                             .style("font-color", "white");
                       })
             .on("mousemove", mousemove)
