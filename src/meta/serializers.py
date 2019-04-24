@@ -29,4 +29,4 @@ class BasinSerializer(serializers.ModelSerializer):
     user            = UserPublicSerializer(read_only=True)
     class Meta:
         model = Basin
-        fields = ['url','slug','user','nombre','direccion','barrio','longitud','latitud','telefono_contacto','clase']
+        fields = ['url','user','slug','pk','nombre','municipio','longitud','latitud','direccion','barrio','water_level_history_path','radar_rain_history_path','statistical_model_path','picture_path','camera_path','three_hours_image_path','one_day_image_path','three_days_image_path','monthly_image_path']
