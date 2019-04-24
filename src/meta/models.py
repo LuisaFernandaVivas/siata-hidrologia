@@ -66,7 +66,6 @@ class Basin(models.Model):
 	three_days_image_path   = models.CharField(max_length = 120,null = True,blank=True)
 	monthly_image_path      = models.CharField(max_length = 120,null = True,blank=True)
 	wmf_image_path          = models.CharField(max_length = 120,null = True,blank=True)
-	basin_json_path         = models.CharField(max_length = 120,null = True,blank=True)
 	basin_mask_path         = models.CharField(max_length = 120,null = True,blank=True)
 	basin_polygon           = models.PolygonField()
 	def __str__(self):
