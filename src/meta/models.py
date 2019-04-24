@@ -1,6 +1,5 @@
-from django.db import models
 from django.conf import settings
-
+from django.contrib.gis.db import models
 class Basin(models.Model):
 	user					= models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	codigo 					= models.IntegerField(unique=False,null=True,blank=True)
@@ -69,6 +68,7 @@ class Basin(models.Model):
 	wmf_image_path          = models.CharField(max_length = 120,null = True,blank=True)
 	basin_json_path         = models.CharField(max_length = 120,null = True,blank=True)
 	basin_mask_path         = models.CharField(max_length = 120,null = True,blank=True)
+	basin_polygon           = models.PolygonField()
 	def __str__(self):
 		return self.slug
 

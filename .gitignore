@@ -1,4 +1,8 @@
+
 src/meta/migrations/
+src/post/migrations/
+src/data/migrations/
+
 parsed_log.md
 parse_git_log.py
 staticfiles/js/reactify-django.ui.js
