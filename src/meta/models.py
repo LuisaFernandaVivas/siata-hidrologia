@@ -67,7 +67,7 @@ class Basin(models.Model):
 	monthly_image_path      = models.CharField(max_length = 120,null = True,blank=True)
 	wmf_image_path          = models.CharField(max_length = 120,null = True,blank=True)
 	basin_mask_path         = models.CharField(max_length = 120,null = True,blank=True)
-	basin_polygon           = models.PolygonField()
+	basin_polygon           = models.PolygonField(null=True,blank=True)
 	def __str__(self):
 		return self.slug
 
