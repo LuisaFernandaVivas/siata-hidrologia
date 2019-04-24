@@ -35,6 +35,7 @@ class Basin(models.Model):
 	red 					= models.CharField(max_length = 120,null = True,blank=True)
 	telefono_contacto 		= models.BigIntegerField(null = True,blank=True)
 	offset_old 				= models.FloatField(max_length = 120,null = True,blank=True)
+	offset 				= models.FloatField(max_length = 120,null = True,blank=True)
 	flag_modelo_wmf 		= models.IntegerField(null = True,blank=True,choices=((1,'si'),(0,'no')))#
 	net_path 				= models.CharField(max_length = 120,null = True,blank=True)
 	x_sensor 				= models.FloatField(max_length = 120,null = True,blank=True)
