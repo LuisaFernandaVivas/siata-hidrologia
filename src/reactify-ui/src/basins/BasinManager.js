@@ -54,6 +54,7 @@ class BasinManager extends Component {
       const {show} = this.state
       const {item} = this.state
       const {data} = this.state
+      console.log(item)
 
     return (
       <div className="col-sm-12">
