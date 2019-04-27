@@ -18,12 +18,28 @@ class BasinManager extends Component {
         data : {}
       }
 
-  toogleItem(value,filter){
-    this.setState({
-      item : value,
-      show : false,
-      data : filter
-      })
+  toogleItem(value,filter){ //http request
+    const endpoint = 'api/basin/'+value.slug
+    let thisComp = this
+    let lookupOptions = {
+        method: "GET",
+        headers: {
+          'Content-Type':'application/json'
+        }
+    }
+
+    fetch(endpoint,lookupOptions) //fetch = recuperar, returns a promise,
+    .then(function(response){
+        return response.json()
+    }).then(function(responseData){
+          thisComp.setState({
+              item: responseData,
+              data: filter,
+              show:false,
+              })
+    }).catch(function(error){
+        console.log("error",error)
+    })
   }
 
   componentDidMount(){
@@ -38,7 +54,7 @@ class BasinManager extends Component {
       const {show} = this.state
       const {item} = this.state
       const {data} = this.state
-      console.log(item)
+
     return (
       <div className="col-sm-12">
           <div className = "row">

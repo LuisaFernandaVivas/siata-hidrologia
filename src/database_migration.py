@@ -7,7 +7,6 @@ from django.utils import timezone
 import datetime
 import os
 
-
 def insert_df(table_name,model):
     data_migration_path = 'staticfiles/'
     import pandas as pd

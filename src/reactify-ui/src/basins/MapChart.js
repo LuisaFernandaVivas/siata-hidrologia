@@ -7,7 +7,7 @@ class MapChart extends React.Component {
     function ifisEmpty(obj) {
         for(var key in obj) {
             if(obj.hasOwnProperty(key))
-                return [obj.latitude,obj.longitude];
+                return [obj.latitud,obj.longitud];
         }
         return [6.264,-75.603];
     }
