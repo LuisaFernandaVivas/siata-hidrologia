@@ -55,9 +55,19 @@ class BasinManager extends Component {
       const {item} = this.state
       const {data} = this.state
       console.log(item)
-
+      function isEmpty(obj) {
+          for(var key in obj) {
+              if(obj.hasOwnProperty(key))
+                  return obj.nombre;
+          }
+          return '';
+      }
     return (
       <div className="col-sm-12">
+        <div className="col-sm-12">
+          <div className="col-sm-12">
+            <h2> {isEmpty(item)} </h2>
+          </div>
           <div className = "row">
             <div id = 'timechart-row' className ='col-sm-5'>
               <TimeChart data = {data} parameter = {'water_level'} color = {"#4C90CD"}/>
@@ -83,9 +93,10 @@ class BasinManager extends Component {
               </div>
             </div>
           </div>
-          <div id='basinchart' className='col-sm-12'>
-            <BasinChart show = {show} click={this.toogleItem}/>
-          </div>
+        </div>
+        <div id='basinchart' className='col-sm-12'>
+          <BasinChart show = {show} click={this.toogleItem}/>
+        </div>
       </div>
     );
   }
