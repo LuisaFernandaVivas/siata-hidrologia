@@ -15,7 +15,7 @@ class MapChart extends React.Component {
     return (
       <LeafletMap
         center={center_location}
-        zoom={12}
+        zoom={11}
         maxZoom={17}
         attributionControl={true}
         zoomControl={true}
@@ -37,7 +37,7 @@ class MapChart extends React.Component {
            key={item.slug}
            data={item.basin_polygon}
            color='#4b898a'
-           fillColor='#6cafb0'
+           fillColor='#8cbbc9'
            fillOpacity= {0.5}
            weight={1}/>
       </LeafletMap>
