@@ -1,3 +1,4 @@
+src/staticfiles/data.csv
 static-cdn-local/meta_basin.csv
 static-cdn-local/polygon/
 parsed_log.md
