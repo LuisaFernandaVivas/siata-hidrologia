@@ -1,12 +1,14 @@
-
+static-cdn-local/polygon/
+static-cdn-local/meta_basin.csv
 src/meta/migrations/
 src/post/migrations/
 src/data/migrations/
-
+.gitignore.save
 parsed_log.md
 parse_git_log.py
 staticfiles/js/reactify-django.ui.js
 src/staticfiles/js/reactify-django.ui.js
+static-cdn-local/data.csv
 # Node.js related
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 src/data/migrations/
