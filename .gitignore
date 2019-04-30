@@ -1,3 +1,6 @@
+src/meta/migrations
+static-cdn-local/meta_basin.csv
+static-cdn-local/polygon/
 parsed_log.md
 parse_git_log.py
 staticfiles/js/reactify-django.ui.js
