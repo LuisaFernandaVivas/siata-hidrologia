@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'corsheaders',
     'rest_framework',
+    'rest_framework_gis',
     'posts',
     'meta',
     'django_extensions',
@@ -94,7 +95,7 @@ DATABASES = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.contrib.gis.db.backends.mysql',
         'NAME': 'hidroapp',
         'USER': 'sample_user',
         'PASSWORD': 's@mple_p@ss',

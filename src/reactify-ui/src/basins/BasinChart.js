@@ -23,22 +23,15 @@ class BasinChart extends Component {
 
         d3.csv("static/data.csv", function(d) {
           return {
-            name:d.name,
-            date:d.date,
-            hour:d.hour,
-            color:d.color,
-            location:d.location,
-            path:d.path,
+            slug:d.slug,
+            path:d.three_hours_image_path,
             water_surface_velocity:d.water_surface_velocity,
             water_level:d.water_level,
             radar_rain:d.radar_rain,
-            longitude:d.longitude,
-            latitude:d.latitude,
-            water_level_history_path:d.water_level_history_path,
-            radar_rain_history_path:d.radar_rain_history_path,
-            statistical_model_path:d.statistical_model_path,
-            picture_path:d.picture_path,
-            camera_path:d.camera_path,
+            color:d.water_level_color,
+            hour:d.hour,
+            date:d.date,
+            name:d.nombre
           };
         }).then (function (data) {
           var myGroups = d3.map(data, function(d){return d.hour;}).keys()

@@ -4,13 +4,13 @@ from .permissions import IsOwnerOrReadOnly
 from .serializers import BasinSerializer
 
 
-class BasinDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+class BasinDetailAPIView(generics.RetrieveAPIView):
     queryset            = Basin.objects.all()
     serializer_class    = BasinSerializer
     lookup_field        = 'slug'
     permission_classes  = [IsOwnerOrReadOnly]
 
-class BasinListAPIView(generics.ListCreateAPIView):
+class BasinListAPIView(generics.ListAPIView):
     queryset            = Basin.objects.all()
     serializer_class    = BasinSerializer
     permission_classes  = [permissions.IsAuthenticatedOrReadOnly]

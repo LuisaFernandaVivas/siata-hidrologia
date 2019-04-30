@@ -1,6 +1,5 @@
-from django.db import models
 from django.conf import settings
-
+from django.contrib.gis.db import models
 class Basin(models.Model):
 	user					= models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	codigo 					= models.IntegerField(unique=False,null=True,blank=True)
@@ -36,6 +35,7 @@ class Basin(models.Model):
 	red 					= models.CharField(max_length = 120,null = True,blank=True)
 	telefono_contacto 		= models.BigIntegerField(null = True,blank=True)
 	offset_old 				= models.FloatField(max_length = 120,null = True,blank=True)
+	offset 				= models.FloatField(max_length = 120,null = True,blank=True)
 	flag_modelo_wmf 		= models.IntegerField(null = True,blank=True,choices=((1,'si'),(0,'no')))#
 	net_path 				= models.CharField(max_length = 120,null = True,blank=True)
 	x_sensor 				= models.FloatField(max_length = 120,null = True,blank=True)
@@ -57,6 +57,18 @@ class Basin(models.Model):
 	l_tot_cauces 			= models.FloatField(max_length = 120,null = True,blank=True)
 	timestamp				= models.DateTimeField(auto_now_add=True)
 	updated					= models.DateTimeField(auto_now=True)
+	water_level_history_path = models.CharField(max_length = 120,null = True,blank=True)
+	radar_rain_history_path = models.CharField(max_length = 120,null = True,blank=True)
+	statistical_model_path  = models.CharField(max_length = 120,null = True,blank=True)
+	picture_path            = models.CharField(max_length = 120,null = True,blank=True)
+	camera_path             = models.CharField(max_length = 120,null = True,blank=True)
+	three_hours_image_path  = models.CharField(max_length = 120,null = True,blank=True)
+	one_day_image_path      = models.CharField(max_length = 120,null = True,blank=True)
+	three_days_image_path   = models.CharField(max_length = 120,null = True,blank=True)
+	monthly_image_path      = models.CharField(max_length = 120,null = True,blank=True)
+	wmf_image_path          = models.CharField(max_length = 120,null = True,blank=True)
+	basin_mask_path         = models.CharField(max_length = 120,null = True,blank=True)
+	basin_polygon           = models.PolygonField(null=True,blank=True)
 	def __str__(self):
 		return self.slug
 

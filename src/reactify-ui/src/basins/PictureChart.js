@@ -9,9 +9,18 @@ class PictureChart extends Component {
   const {title} = this.props
   const style = {height:150,
                  width:250};
-
+  function emptyField(path) {
+    if (path == null || path == ''){
+      return 'd-none'
+    }
+    else{
+      return 'd-block'
+    }
+  }
+  console.log(path)
+  const class_name = emptyField(path)
   return (
-    <div id='parent'>
+    <div id='parent' className={class_name}>
       <div className="chart-wrapper">
         <div className="chart-title">
           {title}

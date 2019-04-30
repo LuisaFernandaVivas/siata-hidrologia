@@ -18,12 +18,28 @@ class BasinManager extends Component {
         data : {}
       }
 
-  toogleItem(value,filter){
-    this.setState({
-      item : value,
-      show : false,
-      data : filter
-      })
+  toogleItem(value,filter){ //http request
+    const endpoint = 'api/basin/'+value.slug
+    let thisComp = this
+    let lookupOptions = {
+        method: "GET",
+        headers: {
+          'Content-Type':'application/json'
+        }
+    }
+
+    fetch(endpoint,lookupOptions) //fetch = recuperar, returns a promise,
+    .then(function(response){
+        return response.json()
+    }).then(function(responseData){
+          thisComp.setState({
+              item: responseData,
+              data: filter,
+              show:false,
+              })
+    }).catch(function(error){
+        console.log("error",error)
+    })
   }
 
   componentDidMount(){
@@ -38,22 +54,40 @@ class BasinManager extends Component {
       const {show} = this.state
       const {item} = this.state
       const {data} = this.state
-      console.log(item)
+      const gif = "http://siata.gov.co/operacional/radar/PPI/Radar_10_120/Prod_ZOOM_Radar_10_120_DBZH.gif"
+      function isEmpty(obj,class_name) {
+          for(var key in obj) {
+              if(obj.hasOwnProperty(key))
+                  return class_name;
+          }
+          return 'd-none';
+      }
+      function getName(obj) {
+          for(var key in obj) {
+              if(obj.hasOwnProperty(key))
+                  return obj.nombre;
+          }
+          return 'd-none';
+      }
     return (
       <div className="col-sm-12">
+          <div id='title' className={isEmpty(item,'col-sm-12')}>
+            <h2>{getName(item)}</h2>
+          </div>
           <div className = "row">
-            <div id = 'timechart-row' className ='col-sm-5'>
-              <TimeChart data = {data} parameter = {'water_level'} color = {"#4C90CD"}/>
-              <TimeChart data = {data} parameter = {'radar_rain'} color = {"black"}/>
-              <TimeChart data = {data} parameter = {'water_surface_velocity'} color = {"grey"}/>
+            <div id = 'timechart-row' className ={isEmpty(item,'col-sm-5')}>
+              <TimeChart data = {data} parameter = {'water_level'} color = {"#39a4a4"}/>
+              <TimeChart data = {data} parameter = {'radar_rain'} color = {"#69bbbc"}/>
+              <TimeChart data = {data} parameter = {'water_surface_velocity'} color = {"#4c7f80"}/>
               <VideoChart camera_path = {item.camera_path}/>
             </div>
-            <div id = 'picturechart-row' className ='col-sm-3'>
+            <div id = 'picturechart-row' className ={isEmpty(item,'col-sm-3')}>
+              <PictureChart path = {gif} title={'Radar últimas 3 horas'}/>
               <PictureChart path={item.water_level_history_path} title={"Histórico de hidrógrafas"}/>
               <PictureChart path={item.radar_rain_history_path} title={"Histórico de eventos de lluvia"}/>
               <PictureChart path={item.statistical_model_path} title={"Modelo estadístico"}/>
             </div>
-            <div id = 'container' className ='col-sm-4'>
+            <div id = 'container' className ={isEmpty(item,'col-sm-4')}>
               <div className="chart-wrapper">
                 <div className="chart-title">
                   Mapa

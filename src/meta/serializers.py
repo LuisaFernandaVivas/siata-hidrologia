@@ -2,9 +2,7 @@ from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.db.models import Q
 from django.urls import reverse
 from django.utils import timezone
-
 from rest_framework import serializers
-
 from .models import Basin
 
 User = get_user_model()
@@ -29,4 +27,4 @@ class BasinSerializer(serializers.ModelSerializer):
     user            = UserPublicSerializer(read_only=True)
     class Meta:
         model = Basin
-        fields = ['url','slug','user','nombre','direccion','barrio','longitud','latitud','telefono_contacto','clase']
+        fields = ['url','user','slug','pk','nombre','municipio','longitud','latitud','direccion','barrio','water_level_history_path','radar_rain_history_path','statistical_model_path','picture_path','camera_path','three_hours_image_path','one_day_image_path','three_days_image_path','monthly_image_path','basin_mask_path','basin_polygon']

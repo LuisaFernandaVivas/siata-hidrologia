@@ -19,3 +19,5 @@ npm install leaflet
 npm install d3 .
 npm install jquery
 
+for improve query performance add this statement to the database
+ALTER TABLE  data_databasin ADD UNIQUE (fk_id,date)
