@@ -1,5 +1,7 @@
 from django.conf import settings
 from django.contrib.gis.db import models
+from django.urls import reverse
+
 class Basin(models.Model):
 	user					= models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	codigo 					= models.IntegerField(unique=False,null=True,blank=True)
@@ -141,3 +143,6 @@ class Stations(models.Model):
 	@property
 	def title(self):
 		return self.nombre
+
+	def get_absolute_url(self):
+		return reverse("meta:detalle",kwargs = {'slug':self.slug})

@@ -1,0 +1,10 @@
+<div class ='container'>
+{% if request.user.is_authenticated %}
+{% load static %}
+	<a href = '/estaciones' <i class="material-icons" style="font-size:40px" data-toggle="tooltip" title="Listado de estaciones">format_align_justify</i></a></large>
+	<large><a href = '/section/nuevo_aforo' class="glyphicon glyphicon-plus" style="font-size:40px" data-toggle="tooltip" title="Crear registro"></a></large>
+	<large><a href = {{'/consulta/'|add:request.user.username }} class = 'fa fa-search' style="font-size:40px" data-toggle="tooltip" title="Buscar" ><large></a> </large>
+	<small><a href = {{'/upload/' |add:request.user.username }} <i class="material-icons" style="font-size:45px" data-toggle="tooltip" title="Subir foto">add_a_photo</i></a></small>
+	<large><a href =  '/logout' <i class="material-icons" style="font-size:40px" data-toggle="tooltip" title="Salir" >directions_bike</i></a></large>
+{% endif %}
+</div>

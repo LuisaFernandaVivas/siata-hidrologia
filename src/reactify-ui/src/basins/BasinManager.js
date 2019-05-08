@@ -19,7 +19,7 @@ class BasinManager extends Component {
       }
 
   toogleItem(value,filter){ //http request
-    const endpoint = 'api/basin/'+value.slug
+    const endpoint = 'hidrologia/api/basin/'+value.slug
     let thisComp = this
     let lookupOptions = {
         method: "GET",
