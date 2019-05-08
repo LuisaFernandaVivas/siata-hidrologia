@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block head_title %} Estaciones || {{block.super}} {% endblock head_title %}
+{% block content %}
+
+<hr/>
+<h3>Estaciones <a href = '{% url "stations:nuevo" %}' class="glyphicon glyphicon-plus" style="font-size:15px"></a> </h3>
+
+
+<ul>
+{% for obj in object_list %}
+	<li><a href = '{{ obj.get_absolute_url }}'>{{obj.nombre}}</a></li>
+{% empty %}
+	<li><a href = '{% url "stations:nuevo" %}'>Add</a></li>
+
+{% endfor %}
+</ul>
+
+
+{% endblock content %}

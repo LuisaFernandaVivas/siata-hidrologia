@@ -34,14 +34,13 @@ def send_file(request):
   response['Content-Disposition'] = "attachment; filename=%s"%download_name
   return response
 
-
-
 urlpatterns = [
     path('', TemplateView.as_view(template_name='react.html')),
-    path('walking', TemplateView.as_view(template_name='walking.html')),
-    re_path(r'^posts/', TemplateView.as_view(template_name='react.html')),
     path('admin/', admin.site.urls),
-    path('api/posts/', include('posts.urls')),
-    path('api/basin/', include('meta.urls')),
-    path('static/data.csv', send_file)
+    path('static/data.csv', send_file),
+    path('api/basin/', include(('meta.urls','meta'))),
+    url(r'^gauge-stations/',include(('meta.urls','meta'),namespace = 'stations')),
+    url(r'^hidraulics/',include(('hidraulics.urls','hidraulics'),namespace = 'hidraulics')),
+    url(r'^search/', include(('search.urls','search'),namespace= 'search')),
+    url(r'^upload/', include(('uploadfiles.urls','uploadfiles'),namespace='uploadfiles'))
 ]

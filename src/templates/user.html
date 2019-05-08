@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block head_title %} {{user.username}} || {{block.super}} {% endblock head_title %}
+
+
+{% block content %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+
+<hr/>
+
+
+<form class='form' method ='GET' action='.'>
+<input type='text' placeholder = 'Search..' name = 'q' value = '{{ request.GET.q }}'>
+<button class='btn btn-default' type='submit'>Buscar</button>
+</form>
+
+{% if locations %}
+{% for emp in locations %}
+	<hr/>
+	<h4><a href = '{{emp.get_absolute_url}}'> {{emp.nombre}} </a></h4>
+	<p>Dirección: {{ emp.direccion }} | Teléfono: {{ emp.telefono_contacto }}</p>
+	<table>
+	<tr>
+    <th>Fecha</th>
+    <th>Tipo de salida</th>
+    <th>Tipo de aforo</th>
+		<th>Caudal total</th>
+		<th>Área mojada</th>
+    <th>Profundidad promedio</th>
+		<th>Perímetro mojado</th>
+		<th>Ancho superficial</th>
+    <th>Velocidad promedio</th>
+		<th>Radio hidráulico</th>
+	</tr>
+	{% for item in emp.objetos %}
+		<tr>
+			<td><a href = '{{item.get_absolute_url}}'>{{ item.date }}</a></td>
+      <td>{{ item.tipo_salida}}</td>
+      <td>{{ item.tipo_aforo}}</td>
+			<td>{{ item.caudal_total}}</td>
+			<td>{{ item.area_mojada }}</td>
+      <td>{{ item.profundidad_media }}</td>
+      <td>{{ item.perimetro_mojado }}</td>
+      <td>{{ item.ancho_superficial }}</td>
+      <td>{{ item.velocidad_promedio }}</td>
+      <td>{{ item.radio_hidraulico }}</td>
+		</tr>
+
+	{% endfor %}
+	</table>
+
+{% endfor %}
+{% else %}
+
+<p Class = 'lead'></p>
+{% endif %}
+{% endblock %}

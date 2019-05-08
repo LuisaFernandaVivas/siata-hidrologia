@@ -43,7 +43,10 @@ INSTALLED_APPS = [
     'posts',
     'meta',
     'django_extensions',
-    'data'
+    'data',
+    'hidraulics',
+    'uploadfiles',
+    'search'
 ]
 
 MIDDLEWARE = [

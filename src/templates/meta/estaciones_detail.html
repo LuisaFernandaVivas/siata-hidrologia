@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block head_title %} {{form.instance.title}} || {{block.super}} {% endblock head_title %}
+
+
+{% block content %}
+
+<h1>Nombre: {{form.instance.estacion}}</h1>
+<h3>Email: {{form.instance.email}}</h3>
+<h3>Nombre: {{form.instance.nombre}}</h3>
+
+
+
+<p>Última actualización: {{form.instance.updated|timesince}}</p>
+
+{% endblock content %}
