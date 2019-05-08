@@ -39,7 +39,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('static/data.csv', send_file),
     path('hidrologia/', include(('meta.urls','meta'),namespace='meta')),
-    url(r'^hidraulics/',include(('hidraulics.urls','hidraulics'),namespace = 'hidraulics')),
+    url(r'^hidraulica/',include(('hidraulics.urls','hidraulics'),namespace = 'hidraulics')),
     url(r'search/', include(('search.urls','search'),namespace= 'search')),
     url(r'^upload/', include(('uploadfiles.urls','uploadfiles'),namespace='uploadfiles'))
 ]
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

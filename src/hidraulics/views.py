@@ -605,7 +605,7 @@ class SectionCreateView(LoginRequiredMixin,CreateView):
 	template_name = "form_create_section.html"
 
 	def form_valid(self,form):
-		self.success_url = reverse_lazy('hidraulics:nueva-vertical',current_app='hidrologia')
+		self.success_url = reverse_lazy('hidraulics:nueva-vertical',current_app='hidraulics')
 		instance = form.save(commit=False)
 		instance.user = self.request.user
 		SUPER = super(SectionCreateView,self).form_valid(form)

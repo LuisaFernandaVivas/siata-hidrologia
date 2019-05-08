@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView
 from .views import *
 
 urlpatterns = [
-	url(r'^nuevo-item/$', ItemCreateView.as_view(),name='nuevo-item'),
+	url(r'^nuevo/$', ItemCreateView.as_view(),name='nuevo-item'),
 	url(r'^item/(?P<pk>\d+)/$', ItemUpdateView.as_view(),name = 'item'),
 	url(r'^vertical/(?P<pk>\d+)/$', SectionUpdateView.as_view(),name = 'vertical'),
 	url(r'^nueva-vertical/$', SectionCreateView.as_view(),name = 'nueva-vertical'),

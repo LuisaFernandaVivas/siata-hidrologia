@@ -1,14 +1,14 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-from meta.models import Basin
+from meta.models import *
 from django.urls import reverse
 import datetime
 import pandas as pd
 
 class Item(models.Model):
 	user 							= models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
-	item_fk							= models.ForeignKey(Basin,on_delete=models.CASCADE)
+	item_fk							= models.ForeignKey(Stations,on_delete=models.CASCADE)
 	aforo							= models.CharField(max_length = 15, null = True,blank = True)
 	fecha							= models.DateField(null = True,blank = True)
 	date     						= models.DateTimeField(null = True,blank = True)
@@ -44,7 +44,7 @@ class Item(models.Model):
 		return '%s-%s'%(self.item_fk,self.date.strftime("%Y%m%d%H%M"))
 
 	def get_absolute_url(self):
-		return reverse('hidraulica:detalle',kwargs = {'pk':self.pk})
+		return reverse('hidraulics:item',kwargs = {'pk':self.pk})
 
 	class Meta:
 		ordering = ['-updated','-timestamp']
@@ -75,7 +75,7 @@ class Section(models.Model):
 		return '%s'%(self.fk)
 
 	def get_absolute_url(self):
-		return reverse('hidraulica:vertical',kwargs = {'pk':self.pk})
+		return reverse('hidraulics:vertical',kwargs = {'pk':self.pk})
 
 	class Meta:
 		ordering = ['-updated','-timestamp']
