@@ -1,7 +1,9 @@
+import numpy as np
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView,ListView,DetailView,CreateView,UpdateView
 from .models import Item,Section,Topo
+from meta.models import Stations
 from .forms import *
 import locale
 from django.urls import reverse_lazy
@@ -72,14 +74,14 @@ class Hidraulica:
         self.topos         = pd.DataFrame()
         self.sections      = pd.DataFrame()
 
-    def set_from_django(self,Item,Section,Topo,estaciones,item):
+    def set_from_django(self,Item,Section,Topo,Stations,item):
         if type(item) == int:
             item = Item.objects.get(id=item)
         self.item     = item
         self.section  = read_frame(Section.objects.filter(fk = self.item.pk),verbose=False).sort_values('vertical')
         self.topo     = read_frame(Topo.objects.filter(fk = self.item.pk),verbose=False).sort_values('vertical')
-        self.estacion = estaciones.objects.get(id = self.item.item_fk_id)
-        self.infost   = read_frame(estaciones.objects.filter(Q(clase='Nivel')| Q(clase='Section')),verbose=False)
+        self.estacion = Stations.objects.get(id = self.item.item_fk_id)
+        self.infost   = read_frame(Stations.objects.filter(Q(clase='Nivel')| Q(clase='Section')),verbose=False)
         self.info     = self.infost.set_index('id').loc[self.item.item_fk_id]
         self.items    = read_frame(Item.objects.filter(item_fk_id = self.estacion.id),verbose=False)
         self.topos    = read_frame(Topo.objects.all(),verbose=False)
@@ -477,7 +479,7 @@ class ItemCreateView(LoginRequiredMixin,CreateView):
 		return context
 
 class ItemUpdateView(LoginRequiredMixin,UpdateView,Hidraulica):
-	template_name = 'hidraulics/detail-update.html'
+	template_name = 'hidraulics/item-update.html'
 	form_class = ItemUpdateForm
 
 	def get_queryset(self):
@@ -486,7 +488,7 @@ class ItemUpdateView(LoginRequiredMixin,UpdateView,Hidraulica):
 	def get_context_data(self,*args,**kwargs):
 		context = super(ItemUpdateView,self).get_context_data(*args,**kwargs)
 		Hidraulica.__init__(self)
-		self.set_from_django(Item,Section,Topo,estaciones,context['item'])
+		self.set_from_django(Item,Section,Topo,Stations,context['item'])
 		# build dependencies
 		filepath = 'images/item_history/history-%s.png'%context['item']
 		import os
@@ -600,7 +602,7 @@ class SectionDetailView(LoginRequiredMixin,DetailView):
 		return Section.objects.all()
 
 class SectionCreateView(LoginRequiredMixin,CreateView):
-	'''Creates form for path /estaciones/nuevo/'''
+	'''Creates form for path /Stations/nuevo/'''
 	form_class = SectionForm
 	template_name = "form_create_section.html"
 
@@ -748,12 +750,12 @@ def delete_section(request,pk=None):
 	instance = get_object_or_404(Section,id=pk)
 	instance.delete()
 	messages.success(request,"succesfully deleted")
-	return redirect("hidraulics:nueva_dovela")
+	return redirect("hidraulics:nueva-vertical")
 
 class TopoCreateView(LoginRequiredMixin,CreateView):
 	'''Creates View for topo-batimetria'''
 	form_class = TopoForm
-	template_name = "form_topo.html"
+	template_name = "hidraulics/form_topo.html"
 
 	def form_valid(self,form):
 		self.success_url = reverse_lazy('hidraulics:nueva-topo',current_app='hidraulics')
@@ -794,7 +796,7 @@ class TopoCreateView(LoginRequiredMixin,CreateView):
 
 class TopoUpdateView(LoginRequiredMixin,UpdateView):
 	form_class = TopoUpdateForm
-	template_name = "form_topo.html"
+	template_name = "hidraulics/form_topo.html"
 
 	def form_valid(self,form):
 		self.success_url = reverse_lazy('hidraulics:nueva-topo',current_app='hidraulics')
@@ -831,7 +833,7 @@ def delete_topo(request,pk=None):
 	instance = get_object_or_404(Topo,id=pk)
 	instance.delete()
 	messages.success(request,"succesfully deleted")
-	return redirect("hidraulics:nueva_topo")
+	return redirect("hidraulics:nueva-topo")
 
 
 def transfer_to_topo(request,pk=None):

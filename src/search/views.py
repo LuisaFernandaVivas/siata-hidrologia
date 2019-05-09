@@ -7,10 +7,22 @@ from django.contrib.auth import logout
 from django.http import Http404
 from meta.models import Stations
 from hidraulics.models import Item
+from django.db.models import Q
 
 import locale
 locale.setlocale( locale.LC_ALL, '' )
 User = get_user_model()
+
+def search(self,query):
+	if query:
+		query = query.strip()
+		filtro =  self.filter(
+			Q(nombre__icontains=query)|
+			Q(nombre__iexact=query)
+			).distinct()
+		return filtro
+	else:
+		return self.none()
 
 class ProfileDetailView(LoginRequiredMixin,DetailView):
 	template_name = 'user.html'
@@ -24,7 +36,9 @@ class ProfileDetailView(LoginRequiredMixin,DetailView):
 		context = super(ProfileDetailView,self).get_context_data(*args,**kwargs)
 		query = self.request.GET.get('q')
 		items_exists = Item.objects.all().exists() # todos los objetos
-		qs = Stations.objects.filter(clase='Section').search(query)#filter(user=user).search(query)
+		qs = Stations.objects.filter(clase='Section')
+		qs = search(qs,query)
+		print('this is the query %s'%query)
 		for item_obj in qs:
 			item_obj.objetos = item_obj.item_set.all()
 		if items_exists and qs.exists():

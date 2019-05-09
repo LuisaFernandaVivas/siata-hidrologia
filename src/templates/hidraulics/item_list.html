@@ -1,0 +1,20 @@
+
+
+{% extends "base.html" %}
+{% block head_title %} Registros || {{block.super}} {% endblock head_title %}
+
+
+{% block content %}
+<h1>estaciones</h1>
+<ul>
+
+
+<p>Número de registros: {{object_list.count}}</p>
+
+{% for obj in object_list %}
+	<li>
+		<a href = '{{obj.get_absolute_url}}'>{{obj.company}}</a><br/>
+	</li>
+{% endfor %}
+</ul>
+{% endblock content %}
