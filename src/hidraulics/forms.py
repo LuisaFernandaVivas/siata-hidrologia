@@ -2,13 +2,17 @@ from django import forms
 from .models import Item,Section,Topo
 import datetime
 from datetimewidget.widgets import DateTimeWidget
+dateTimeOptions = {	'format': 'dd/mm/yyyy HH:ii',
+					'autoclose': True,
+					'showMeridian' : True
+					}
 
 class ItemCreateForm(forms.ModelForm):
 	class Meta:
 		model = Item
 		fields = [	'item_fk','date','tipo_salida','tipo_aforo','ancho_superficial','y_lamina','x_lamina']
 		labels = dict(zip(fields,[	"Estacion",'Fecha',"Tipo de campaña","Tipo de aforo",'Ancho del canal',"lamina","Sensor-x"]))
-		widgets = dict(zip(['date'],[DateTimeWidget()]))
+		widgets = dict(zip(['date'],[DateTimeWidget(options=dateTimeOptions)]))
 
 	def __init__(self,user=None,*args,**kwargs):
 		super(ItemCreateForm,self).__init__(*args,**kwargs)
@@ -18,7 +22,7 @@ class ItemUpdateForm(forms.ModelForm):
 		model = Item
 		fields = ['date','tipo_salida','tipo_aforo','ancho_superficial','y_lamina','x_lamina','calidad']
 		labels = dict(zip(fields,["Fecha","Tipo de campaña","Tipo de aforo",'Ancho del canal',"lamina","Sensor-x","Calidad"]))
-		widgets = dict(zip(['date'],[DateTimeWidget()]))
+		widgets = dict(zip(['date'],[DateTimeWidget(dateTimeOptions)]))
 
 	def __init__(self,user=None,*args,**kwargs):
 		super(ItemUpdateForm,self).__init__(*args,**kwargs)
