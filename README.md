@@ -19,6 +19,7 @@ git clone ...
 luego se accede a la carpeta y se instala el ambiente virtual con el siguiente código
 
 virtualenv -p python3 .
+El repositorio actual está instalado en python versión 3.6.5, asegúrese de haber instalado una version igual o posterior
 
 se activa el ambienta virtual
 source bin/activate
