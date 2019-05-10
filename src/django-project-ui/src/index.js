@@ -6,7 +6,7 @@ import App from './App';
 
 // import registerServiceWorker from './registerServiceWorker';
 
-let myComponent =  document.getElementById('reactify-django-ui')
+let myComponent =  document.getElementById('django-project-django-ui')
 if (myComponent !== null){
     ReactDOM.render(<App />,myComponent);
 }

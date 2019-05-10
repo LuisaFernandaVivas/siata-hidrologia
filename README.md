@@ -31,7 +31,7 @@ pip install -r requirements.txt
 luego se intala el entorno de ejecución de javascript necesario para el funcionamiento del frontend
 
 
-cd reactify-ui
+cd reactjs
 npm install
 npm install react-cookies -save
 npm install whatwg-fetch --save

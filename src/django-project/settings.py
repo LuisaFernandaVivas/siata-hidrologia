@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework_gis',
-    'posts',
     'meta',
     'django_extensions',
     'data',
