@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import logout
 from django.http import Http404
 from meta.models import Stations
-from hidraulics.models import Item
+from hydraulics.models import Item
 from django.db.models import Q
 
 import locale

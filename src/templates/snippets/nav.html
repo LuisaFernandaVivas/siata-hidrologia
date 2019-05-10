@@ -1,7 +1,7 @@
 <div class ='container'>
 {% if request.user.is_authenticated %}
 {% load static %}
-	<large><a href = "{% url 'hidraulics:nuevo' %}" class="glyphicon glyphicon-plus" style="font-size:40px" data-toggle="tooltip" title="Crear registro"></a></large>
+	<large><a href = "{% url 'hydraulics:nuevo' %}" class="glyphicon glyphicon-plus" style="font-size:40px" data-toggle="tooltip" title="Crear registro"></a></large>
 	<large><a href = {{'/search/'|add:request.user.username }} class = 'fa fa-search' style="font-size:40px" data-toggle="tooltip" title="Buscar" ><large></a> </large>
 	<large><a href =  '/logout' <i class="material-icons" style="font-size:40px" data-toggle="tooltip" title="Salir" >directions_bike</i></a></large>
 {% endif %}

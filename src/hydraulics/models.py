@@ -44,7 +44,7 @@ class Item(models.Model):
 		return '%s-%s'%(self.item_fk,self.date.strftime("%Y%m%d%H%M"))
 
 	def get_absolute_url(self):
-		return reverse('hidraulics:item',kwargs = {'pk':self.pk})
+		return reverse('hydraulics:item',kwargs = {'pk':self.pk})
 
 	class Meta:
 		ordering = ['-updated','-timestamp']
@@ -75,7 +75,7 @@ class Section(models.Model):
 		return '%s'%(self.fk)
 
 	def get_absolute_url(self):
-		return reverse('hidraulics:vertical',kwargs = {'pk':self.pk})
+		return reverse('hydraulics:vertical',kwargs = {'pk':self.pk})
 
 	class Meta:
 		ordering = ['-updated','-timestamp']
@@ -93,7 +93,7 @@ class Topo(models.Model):
 		return '%s'%(self.fk)
 
 	def get_absolute_url(self):
-		return reverse('hidraulics:topo',kwargs = {'pk':self.pk})
+		return reverse('hydraulics:topo',kwargs = {'pk':self.pk})
 
 	class Meta:
 		ordering = ['-updated','-timestamp']

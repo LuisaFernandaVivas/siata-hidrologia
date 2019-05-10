@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.signals import pre_save
 from django.conf import settings
 from meta.models import Stations
-from hidraulics.models import Item
+from hydraulics.models import Item
 from django.urls import reverse
 import os
 from uuid import uuid4

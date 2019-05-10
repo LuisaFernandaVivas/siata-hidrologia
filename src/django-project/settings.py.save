@@ -44,10 +44,11 @@ INSTALLED_APPS = [
     'meta',
     'django_extensions',
     'data',
-    'hidraulics',
+    'hydraulics',
     'uploadfiles',
     'search',
-    'datetimewidget'
+
+
 ]
 
 MIDDLEWARE = [

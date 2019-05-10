@@ -28,20 +28,20 @@ tr:nth-child(even) {
 {% if last_section %}
 <a  href = "{{last_section.get_absolute_url}}" ><img src="/static/aforo_2.png" alt="My image" height = "50" data-toggle="tooltip" title="Aforo" srcset="/static/aforo.png" onmouseout="cambiarImagenSrcsetPorSrc(this)" onmouseover="cambiarImagenSrcsetPorSrc(this)"/></a>
 {% else %}
-<a  href = "{% url 'hidraulics:nueva-vertical'%}" ><img src="/static/aforo_2.png" alt="My image" height = "50" data-toggle="tooltip" title="Aforo" srcset="/static/aforo.png" onmouseout="cambiarImagenSrcsetPorSrc(this)" onmouseover="cambiarImagenSrcsetPorSrc(this)"/></a>
+<a  href = "{% url 'hydraulics:nueva-vertical'%}" ><img src="/static/aforo_2.png" alt="My image" height = "50" data-toggle="tooltip" title="Aforo" srcset="/static/aforo.png" onmouseout="cambiarImagenSrcsetPorSrc(this)" onmouseover="cambiarImagenSrcsetPorSrc(this)"/></a>
 {% endif %}
 {% if last_topo %}
 <a  href = "{{last_topo.get_absolute_url}}" ><img src="/static/topo_2.png" alt="My image" height = "50" data-toggle="tooltip" title="Topo-batimetría" srcset="/static/topo.png" onmouseout="cambiarImagenSrcsetPorSrc(this)" onmouseover="cambiarImagenSrcsetPorSrc(this)"/>
 </a>
 {% else %}
-<a  href = "{% url 'hidraulics:nueva-topo'%}" ><img src="/static/topo_2.png" alt="My image" height = "50" data-toggle="tooltip" title="Topo-batimetría" srcset="/static/topo.png" onmouseout="cambiarImagenSrcsetPorSrc(this)" onmouseover="cambiarImagenSrcsetPorSrc(this)"/>
+<a  href = "{% url 'hydraulics:nueva-topo'%}" ><img src="/static/topo_2.png" alt="My image" height = "50" data-toggle="tooltip" title="Topo-batimetría" srcset="/static/topo.png" onmouseout="cambiarImagenSrcsetPorSrc(this)" onmouseover="cambiarImagenSrcsetPorSrc(this)"/>
 </a>
 {% endif %}
 <hr/>
 
-<a href="{% url 'hidraulics:transferir-topo' pk=item.pk %}"><i class="fa fa-exchange" style="font-size:30px" data-toggle="tooltip" title="transferir verticales de aforos a topo-batimetría"></i></a> <a href="{% url 'hidraulics:transferir-topo' pk=item.pk %}"><i class="fa fa-file-excel-o"  style="font-size:30px" data-toggle="tooltip" title="Descargar excel"></i>
-<a href="{% url 'hidraulics:transferir-topo' pk=item.pk %}">  <i class="fa fa-picture-o" style="font-size:30px" data-toggle="tooltip" title="Fotos"></i></a></h4>
-<a href="{% url 'hidraulics:transferir-topo' pk=item.pk %}">  <i class="fa fa-file-pdf-o" style="font-size:30px" data-toggle="tooltip" title="Resultados"></i></a></h4>
+<a href="{% url 'hydraulics:transferir-topo' pk=item.pk %}"><i class="fa fa-exchange" style="font-size:30px" data-toggle="tooltip" title="transferir verticales de aforos a topo-batimetría"></i></a> <a href="{% url 'hydraulics:transferir-topo' pk=item.pk %}"><i class="fa fa-file-excel-o"  style="font-size:30px" data-toggle="tooltip" title="Descargar excel"></i>
+<a href="{% url 'hydraulics:transferir-topo' pk=item.pk %}">  <i class="fa fa-picture-o" style="font-size:30px" data-toggle="tooltip" title="Fotos"></i></a></h4>
+<a href="{% url 'hydraulics:transferir-topo' pk=item.pk %}">  <i class="fa fa-file-pdf-o" style="font-size:30px" data-toggle="tooltip" title="Resultados"></i></a></h4>
 
 <h1>Nombre: {{item.item_fk.nombre}}<h1/>
 <hr/>

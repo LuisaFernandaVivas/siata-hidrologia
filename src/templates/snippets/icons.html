@@ -4,11 +4,11 @@
 {% if last_section %}
 <a  href = "{{last_section.get_absolute_url}}" ><img src="/static/aforo_2.png" alt="My image" height = "50" data-toggle="tooltip" title="Aforo" srcset="/static/aforo.png" onmouseout="cambiarImagenSrcsetPorSrc(this)" onmouseover="cambiarImagenSrcsetPorSrc(this)"/></a>
 {% else %}
-<a  href = "{% url 'hidraulics:nueva-vertical'%}" ><img src="/static/aforo_2.png" alt="My image" height = "50" data-toggle="tooltip" title="Aforo" srcset="/static/aforo.png" onmouseout="cambiarImagenSrcsetPorSrc(this)" onmouseover="cambiarImagenSrcsetPorSrc(this)"/></a>
+<a  href = "{% url 'hydraulics:nueva-vertical'%}" ><img src="/static/aforo_2.png" alt="My image" height = "50" data-toggle="tooltip" title="Aforo" srcset="/static/aforo.png" onmouseout="cambiarImagenSrcsetPorSrc(this)" onmouseover="cambiarImagenSrcsetPorSrc(this)"/></a>
 {% endif %}
 {% if last_topo %}
 <a  href = "{{last_topo.get_absolute_url}}" ><img src="/static/topo_2.png" alt="My image" height = "50" data-toggle="tooltip" title="Topo-batimetría" srcset="/static/topo.png" onmouseout="cambiarImagenSrcsetPorSrc(this)" onmouseover="cambiarImagenSrcsetPorSrc(this)"/></a>
 {% else %}
-<a  href = "{% url 'hidraulics:nueva-topo'%}" ><img src="/static/topo_2.png" alt="My image" height = "50" data-toggle="tooltip" title="Topo-batimetría" srcset="/static/topo.png" onmouseout="cambiarImagenSrcsetPorSrc(this)" onmouseover="cambiarImagenSrcsetPorSrc(this)"/></a>
+<a  href = "{% url 'hydraulics:nueva-topo'%}" ><img src="/static/topo_2.png" alt="My image" height = "50" data-toggle="tooltip" title="Topo-batimetría" srcset="/static/topo.png" onmouseout="cambiarImagenSrcsetPorSrc(this)" onmouseover="cambiarImagenSrcsetPorSrc(this)"/></a>
 {% endif %}
 <hr/>

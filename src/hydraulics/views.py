@@ -466,7 +466,7 @@ class ItemCreateView(LoginRequiredMixin,CreateView):
 		return Item.objects.all()
 
 	def get_form_kwargs(self):
-		self.success_url = reverse_lazy('hidraulics:nueva-vertical',current_app='hydraulics')
+		self.success_url = reverse_lazy('hydraulics:nueva-vertical',current_app='hydraulics')
 		kwargs = super(ItemCreateView,self).get_form_kwargs()
 		kwargs['user'] = self.request.user
 		date = datetime.datetime.now()-datetime.timedelta(hours=5)
@@ -479,7 +479,7 @@ class ItemCreateView(LoginRequiredMixin,CreateView):
 		return context
 
 class ItemUpdateView(LoginRequiredMixin,UpdateView,Hidraulica):
-	template_name = 'hidraulics/item-update.html'
+	template_name = 'hydraulics/item-update.html'
 	form_class = ItemUpdateForm
 
 	def get_queryset(self):
@@ -607,7 +607,7 @@ class SectionCreateView(LoginRequiredMixin,CreateView):
 	template_name = "form_create_section.html"
 
 	def form_valid(self,form):
-		self.success_url = reverse_lazy('hidraulics:nueva-vertical',current_app='hidraulics')
+		self.success_url = reverse_lazy('hydraulics:nueva-vertical',current_app='hydraulics')
 		instance = form.save(commit=False)
 		instance.user = self.request.user
 		SUPER = super(SectionCreateView,self).form_valid(form)
@@ -716,7 +716,7 @@ class SectionUpdateView(LoginRequiredMixin,UpdateView):
 	template_name = "form_section.html"
 
 	def form_valid(self,form):
-		self.success_url = reverse_lazy('hidraulics:nueva-vertical',current_app='hidraulics')
+		self.success_url = reverse_lazy('hydraulics:nueva-vertical',current_app='hydraulics')
 		instance = form.save(commit=False)
 		instance.user = self.request.user
 		return super(SectionUpdateView,self).form_valid(form)
@@ -750,15 +750,15 @@ def delete_section(request,pk=None):
 	instance = get_object_or_404(Section,id=pk)
 	instance.delete()
 	messages.success(request,"succesfully deleted")
-	return redirect("hidraulics:nueva-vertical")
+	return redirect("hydraulics:nueva-vertical")
 
 class TopoCreateView(LoginRequiredMixin,CreateView):
 	'''Creates View for topo-batimetria'''
 	form_class = TopoForm
-	template_name = "hidraulics/form_topo.html"
+	template_name = "hydraulics/form_topo.html"
 
 	def form_valid(self,form):
-		self.success_url = reverse_lazy('hidraulics:nueva-topo',current_app='hidraulics')
+		self.success_url = reverse_lazy('hydraulics:nueva-topo',current_app='hydraulics')
 		instance = form.save(commit=False)
 		instance.user = self.request.user
 		SUPER = super(TopoCreateView,self).form_valid(form)
@@ -796,10 +796,10 @@ class TopoCreateView(LoginRequiredMixin,CreateView):
 
 class TopoUpdateView(LoginRequiredMixin,UpdateView):
 	form_class = TopoUpdateForm
-	template_name = "hidraulics/form_topo.html"
+	template_name = "hydraulics/form_topo.html"
 
 	def form_valid(self,form):
-		self.success_url = reverse_lazy('hidraulics:nueva-topo',current_app='hidraulics')
+		self.success_url = reverse_lazy('hydraulics:nueva-topo',current_app='hydraulics')
 		instance = form.save(commit=False)
 		instance.user = self.request.user
 		return super(TopoUpdateView,self).form_valid(form)
@@ -833,7 +833,7 @@ def delete_topo(request,pk=None):
 	instance = get_object_or_404(Topo,id=pk)
 	instance.delete()
 	messages.success(request,"succesfully deleted")
-	return redirect("hidraulics:nueva-topo")
+	return redirect("hydraulics:nueva-topo")
 
 
 def transfer_to_topo(request,pk=None):
@@ -849,6 +849,6 @@ def transfer_to_topo(request,pk=None):
 		topo_object.user_id = 1
 		topo_object.save()
 	messages.success(request,"succesfully transfered")
-	return redirect("hidraulics:nueva-topo")
+	return redirect("hydraulics:nueva-topo")
 
 from django.http import JsonResponse

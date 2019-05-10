@@ -39,7 +39,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('static/data.csv', send_file),
     path('hidrologia/', include(('meta.urls','meta'),namespace='meta')),
-    url(r'^hidraulica/',include(('hidraulics.urls','hidraulics'),namespace = 'hidraulics')),
+    url(r'^hidraulica/',include(('hydraulics.urls','hydraulics'),namespace = 'hydraulics')),
     url(r'search/', include(('search.urls','search'),namespace= 'search')),
     url(r'^upload/', include(('uploadfiles.urls','uploadfiles'),namespace='uploadfiles'))
 ]

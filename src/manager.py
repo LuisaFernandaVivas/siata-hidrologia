@@ -315,7 +315,7 @@ class RedRio:
 
 
 
-from hidraulics.models import *
+from hydraulics.models import *
 from meta.models import *
 from django.db.models import Q
 from django_pandas.io import read_frame

@@ -1,3 +1,4 @@
+bin/
 src/meta/migrations/
 src/post/migrations/
 src/data/migrations/

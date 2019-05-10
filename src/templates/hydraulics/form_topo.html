@@ -44,7 +44,7 @@ tr:nth-child(even) {
 		<td><a href = '{{topo_object.get_absolute_url}}'>{{ topo_object.vertical }}</a></td>
 		<td>{{ topo_object.x}}</td>
     <td>{{ topo_object.y}}</td>
-    <td><a href="{% url 'hidraulics:borrar-topo' pk=topo_object.pk %}"><i class="fa fa-trash"></i></a></td>
+    <td><a href="{% url 'hydraulics:borrar-topo' pk=topo_object.pk %}"><i class="fa fa-trash"></i></a></td>
 
 {% endfor %}
 </table>

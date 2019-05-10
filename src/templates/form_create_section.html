@@ -185,7 +185,7 @@ tr:nth-child(even) {
     <td>{{ item.area_i }}</td>
     <td>{{ item.perimetro_i}}</td>
 		<td>{{ item.caudal_i}}</td>
-    <td><a href="{% url 'hidraulics:borrar-vertical' pk=item.pk %}"><i class="fa fa-trash"></i></a></td>
+    <td><a href="{% url 'hydraulics:borrar-vertical' pk=item.pk %}"><i class="fa fa-trash"></i></a></td>
 {% endfor %}
 {% endif%}
 <script type="text/javascript" src="{% static 'main.js' %}"></script>
