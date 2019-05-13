@@ -30,7 +30,8 @@ pip install -r requirements.txt
 
 luego se intala el entorno de ejecución de javascript necesario para el funcionamiento del frontend
 
-src/django-project-ui/
+
+django-project-ui
 npm install
 npm install react-cookies -save
 npm install whatwg-fetch --save
@@ -38,28 +39,12 @@ npm install leaflet
 npm install d3 .
 npm install jquery
 
-se copia del backend al frontend
-npm run collect
-
-
-
-se crea la base de datos de hidrologia
-create database hidrologia;
-GRANT ALL PRIVILEGES ON hidrologia.* TO 'sample_user'@'localhost';
-FLUSH PRIVILEGES;
-
 python manage.py migrate 
 python manage.py makemigrations meta
 python manage.py makemigrations data
 python manage.py makemigrations hydraulics
-python manage.py makemigrations uploadfiles
-python manage.py migrate
-python manage.py createsuperuser
-
-luego se configura un entorno de ejecución para JavaScrip
-modificando el archivo que se encuentra en la ruta 
-src/django-project/setting.py
-
 ALTER TABLE  data_databasin ADD UNIQUE (fk_id,date)
 
-python manage.py shell < database_migration.py
+
+./manage.py shell < database_migration.py
+./manage.py shell < basins.py
