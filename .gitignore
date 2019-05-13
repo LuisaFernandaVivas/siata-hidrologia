@@ -1,7 +1,8 @@
 share/
+src/hydraulics/migrations/
+static-cdn-local/
 src/uploadfiles/migrations/0001_initial.py
 src/uploadfiles/migrations/
-static-cdn-local
 src/media/
 bin/
 src/meta/migrations/
