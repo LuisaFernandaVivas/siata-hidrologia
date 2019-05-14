@@ -10,7 +10,7 @@ class BasinChart extends Component {
 
       if (show == true) {
         var margin = {top: 50, right: 60, bottom: 0, left: 300},
-          width = 1700 - margin.left - margin.right,
+          width = 1500 - margin.left - margin.right,
           height = 2200 - margin.top - margin.bottom;
 
         var svg = d3.select("#heatmap")
@@ -114,11 +114,11 @@ class BasinChart extends Component {
             .on("mouseover", function(d) {
                         div.transition()
                             .duration(200)
-                            .style("opacity", 0.90);
+                            .style("opacity", 0.98);
                         var string = "<img src= " + d.path +  " width= '400' height='500' />";
                         div .html(string) //this will add the image on mouseover
                             .style("left", (d3.event.pageX + 0) + "px")
-                            .style("top", (d3.event.pageY - 900) + "px")
+                            .style("top", (d3.event.pageY - 1500) + "px")
                             .style("font-color", "white");
                       })
             .on("mousemove", mousemove)

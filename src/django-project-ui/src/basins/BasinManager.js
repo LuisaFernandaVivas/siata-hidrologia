@@ -37,6 +37,7 @@ class BasinManager extends Component {
               data: filter,
               show:false,
               })
+          window.scrollTo(0, 600)
     }).catch(function(error){
         console.log("error",error)
     })
@@ -65,7 +66,7 @@ class BasinManager extends Component {
     return (
       <div>
         <div className = "col-sm-12">
-          <img src="/static/banner.jpg" style={{width: 1500, height: 518}} />
+          <img src="/static/banner.jpg" style={{width: 1600, height: 553}} />
         </div>
         <div className="col-sm-6">
           <br/>
