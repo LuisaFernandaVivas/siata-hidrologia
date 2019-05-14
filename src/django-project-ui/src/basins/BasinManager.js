@@ -63,39 +63,48 @@ class BasinManager extends Component {
           return '';
       }
     return (
-      <div className="col-sm-12">
+      <div>
+        <div className = "col-sm-12">
+          <img src="/static/banner.jpg" style={{width: 1500, height: 518}} />
+        </div>
+        <div className="col-sm-6">
+          <br/>
+          <br/>
+          <div className="station-title">
+          {isEmpty(item)}
+          </div>
+        </div>
         <div className="col-sm-12">
           <div className="col-sm-12">
-            <h2> {isEmpty(item)} </h2>
-          </div>
-          <div className = "row">
-            <div id = 'timechart-row' className ='col-sm-5'>
-              <TimeChart data = {data} parameter = {'water_level'} color = {"#4C90CD"}/>
-              <TimeChart data = {data} parameter = {'radar_rain'} color = {"black"}/>
-              <TimeChart data = {data} parameter = {'water_surface_velocity'} color = {"grey"}/>
-              <VideoChart camera_path = {item.camera_path}/>
-            </div>
-            <div id = 'picturechart-row' className ='col-sm-3'>
-              <PictureChart path={item.water_level_history_path} title={"Histórico de hidrógrafas"}/>
-              <PictureChart path={item.radar_rain_history_path} title={"Histórico de eventos de lluvia"}/>
-              <PictureChart path={item.statistical_model_path} title={"Modelo estadístico"}/>
-            </div>
-            <div id = 'container' className ='col-sm-4'>
-              <div className="chart-wrapper">
-                <div className="chart-title">
-                  Mapa
-                </div>
-                <div className="chart-stage">
-                  <div>
-                    <MapChart item = {item}/>
+            <div className = "row">
+              <div id = 'timechart-row' className ='col-sm-5'>
+                <TimeChart data = {data} parameter = {'water_level'} color = {"#4C90CD"}/>
+                <TimeChart data = {data} parameter = {'radar_rain'} color = {"black"}/>
+                <TimeChart data = {data} parameter = {'water_surface_velocity'} color = {"grey"}/>
+                <VideoChart camera_path = {item.camera_path}/>
+              </div>
+              <div id = 'picturechart-row' className ='col-sm-3'>
+                <PictureChart path={item.water_level_history_path} title={"Histórico de hidrógrafas"}/>
+                <PictureChart path={item.radar_rain_history_path} title={"Histórico de eventos de lluvia"}/>
+                <PictureChart path={item.statistical_model_path} title={"Modelo estadístico"}/>
+              </div>
+              <div id = 'container' className ='col-sm-4'>
+                <div className="chart-wrapper">
+                  <div className="chart-title">
+                    Mapa
+                  </div>
+                  <div className="chart-stage">
+                    <div>
+                      <MapChart item = {item}/>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div id='basinchart' className='col-sm-12'>
-          <BasinChart show = {show} click={this.toogleItem}/>
+          <div id='basinchart' className='col-sm-12'>
+            <BasinChart show = {show} click={this.toogleItem}/>
+          </div>
         </div>
       </div>
     );
