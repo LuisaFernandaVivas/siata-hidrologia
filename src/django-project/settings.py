@@ -100,7 +100,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.mysql',
-        'NAME': 'hidrologia',
+        'NAME': 'hydrology',
         'USER': 'sample_user',
         'PASSWORD': 's@mple_p@ss',
         'HOST': 'localhost',
