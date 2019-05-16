@@ -37,7 +37,7 @@ class BasinManager extends Component {
               data: filter,
               show:false,
               })
-          window.scroll({top: 600, left: 0, behavior: 'smooth' }) 
+          window.scroll({top: 600, left: 0, behavior: 'smooth' })
     }).catch(function(error){
         console.log("error",error)
     })

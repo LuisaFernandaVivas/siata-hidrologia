@@ -2,7 +2,7 @@ from django import forms
 from .models import Item,Section,Topo
 import datetime
 from datetimewidget.widgets import DateTimeWidget
-dateTimeOptions = {	'format': 'dd/mm/yyyy HH:ii',
+dateTimeOptions = {	'format': 'mm/dd/yyyy HH:ii',
 					'autoclose': True,
 					'showMeridian' : True
 					}
