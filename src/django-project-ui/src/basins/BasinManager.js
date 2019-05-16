@@ -6,6 +6,9 @@ import TimeChart from './TimeChart';
 import PictureChart from './PictureChart';
 import MapChart from './MapChart';
 import VideoChart from './VideoChart';
+import WaterLevelChart from './WaterLevelChart';
+import RadarRainChart from './RadarRainChart';
+import WaterSurfaceVelocityChart from './WaterSurfaceVelocityChart';
 
 class BasinManager extends Component {
   constructor(props){
@@ -79,9 +82,9 @@ class BasinManager extends Component {
           <div className="col-sm-12">
             <div className = "row">
               <div id = 'timechart-row' className ='col-sm-5'>
-                <TimeChart data = {data} parameter = {'water_level'} color = {"#4C90CD"}/>
-                <TimeChart data = {data} parameter = {'radar_rain'} color = {"black"}/>
-                <TimeChart data = {data} parameter = {'water_surface_velocity'} color = {"grey"}/>
+                <WaterLevelChart data = {data} parameter = {'water_level'} color = {"#4C90CD"} />
+                <RadarRainChart data = {data} parameter = {'radar_rain'} color = {"#008b8b"}/>
+                <WaterSurfaceVelocityChart data = {data} parameter = {'water_surface_velocity'} color = {"black"}/>
                 <VideoChart camera_path = {item.camera_path}/>
               </div>
               <div id = 'picturechart-row' className ='col-sm-3'>
