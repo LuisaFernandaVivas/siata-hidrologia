@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Avenir;
+  width: 100%;
 }
 
 .chart-wrapper {
@@ -86,4 +87,10 @@ body {
 .bnr {
   width: 100px;
   height: 518px;
+}
+
+.full-width-div {
+    position: absolute;
+    width: 100%;
+    left: 0;
 }
