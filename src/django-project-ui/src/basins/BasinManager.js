@@ -58,7 +58,6 @@ ClassName
       const {show} = this.state
       const {item} = this.state
       const {data} = this.state
-      console.log(item)
       function isEmpty(obj) {
           for(var key in obj) {
               if(obj.hasOwnProperty(key))
@@ -84,7 +83,6 @@ ClassName
               <div id = 'timechart-row' className ='col-sm-5'>
                 <WaterLevelChart data = {data} parameter = {'water_level'} color = {"#4C90CD"} />
                 <RadarRainChart data = {data} parameter = {'radar_rain'} color = {"#008b8b"}/>
-                <WaterSurfaceVelocityChart data = {data} parameter = {'water_surface_velocity'} color = {"black"}/>
                 <VideoChart camera_path = {item.camera_path}/>
               </div>
               <div id = 'picturechart-row' className ='col-sm-3'>
