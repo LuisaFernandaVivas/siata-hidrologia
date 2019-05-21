@@ -178,7 +178,7 @@ class BasinChart extends Component {
               .style("opacity", 1)
             d3.select(this)
               .style("stroke", "black")
-              .style("opacity", 0.5)
+              .style("opacity", 1)
           }
           var mousemove = function(d) {
             tooltip
@@ -223,7 +223,7 @@ class BasinChart extends Component {
                             .style("top", (d3.event.pageY - tooltipTop) + "px")
                             .style("font-color", "white");
                       })
-            .on("mousemove", mousemove)
+            .on("mousemove", mouseover)
             .on("mouseleave", mouseleave)
             .on("click", function(d) { return click(d,data.filter(function(f){return f.name == d.name;}));})
       })
