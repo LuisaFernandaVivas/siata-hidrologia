@@ -101,27 +101,29 @@ class BasinChart extends Component {
             var tooltipLeft = 0;
             var tooltipTop = 500;
             var datelimit = data[data.length-6].date
-            var data = data.filter(function(d){return d.date > datelimit;})
+            var currentdata = data.filter(function(d){return d.date > datelimit;})
           } else {
             console.log("menor");
-            var ancho = 0.3*width;
-            var yticks = -50;
-            var x_heat = -50;
+            var ancho = 0.001*width;
+            var yticks = -90;
+            var x_heat = -90;
             var y_heat = 0.7*height;
-            var tooltipLeft = 0;
-            var tooltipTop = 500;
-            var datelimit = data[data.length-2].date
-            var data = data.filter(function(d){return d.date == datelimit;})
+            var tooltipLeft = -10;
+            var tooltipTop = 50;
+            var rangex = x_heat+50;
+
+            var datelimit = data[data.length-1].date
+            var currentdata = data.filter(function(d){return d.date == datelimit;})
 
           }
           console.log(data)
-          var myGroups = d3.map(data, function(d){return d.hour;}).keys()
-          var myVars = d3.map(data, function(d){return d.name;}).keys()
-          var myColors = d3.map(data, function(d){return d.color;}).keys()
+          var myGroups = d3.map(currentdata, function(d){return d.hour;}).keys()
+          var myVars = d3.map(currentdata, function(d){return d.name;}).keys()
+          var myColors = d3.map(currentdata, function(d){return d.color;}).keys()
 
 
           var x = d3.scaleBand()
-            .range([ x_heat, 0.4*ancho]) //grafica
+            .range([ x_heat, rangex]) //grafica
             .domain(myGroups)
             .padding(0.05)
             ;
@@ -182,7 +184,7 @@ class BasinChart extends Component {
                     .style("opacity", 0);                   // set the opacity to nil
 
           svg.selectAll()
-            .data(data, function(d) {return d.hour+':'+d.name;})
+            .data(currentdata, function(d) {return d.hour+':'+d.name;})
             .enter()
             .append("rect")
               .attr("x", function(d) { return x(d.hour) })
