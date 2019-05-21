@@ -10,16 +10,61 @@ class BasinChart extends Component {
 
       if (show == true) {
         var margin = {top: 50, right: 60, bottom: 0, left: 300},
-          width = 1500 - margin.left - margin.right,
+          width = 1100 - margin.left - margin.right,
           height = 2200 - margin.top - margin.bottom;
+
+        function responsiveChart(svg){
+          var chartWidth = width + margin.left + margin.right;
+          var chartHeight = height + margin.top + margin.bottom;
+          var aspect = chartWidth / chartHeight;
+
+          svg.attr("viewBox","0 0" + chartWidth + " " +chartHeight)
+            .attr("perserveAspectRatio","xMinMid")
+            .call(resize);
+
+          d3.select(window).on("resize",resize);
+
+          function resize(){
+            var parent = d3.select("div#risk_container.chart-stage")._groups[0];
+            if (parent[0]==null){
+              console.log('is null')
+              var parentWidth = chartWidth;
+            }
+            else{
+              var parentWidth = parent[0].clientWidth;
+            }
+
+            console.log(parentWidth)
+
+            if (parentWidth < 1000){
+              svg.attr("width",1100 + margin.left + margin.right);
+              svg.attr("height",height + margin.top + margin.bottom)
+
+            }
+
+            else {
+              svg.attr("width",1800 + margin.left + margin.right);
+              svg.attr("height",height + margin.top + margin.bottom)
+
+            }
+
+          }
+        }
 
         var svg = d3.select("#heatmap")
         .append("svg")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom)
+          .call(responsiveChart)
         .append("g")
           .attr("transform",
                 "translate(" + margin.left + "," + margin.top + ")");
+
+        var parent = (d3.select("div#risk_container.chart-stage")._groups[0])
+        if (parent[0]==null){
+          parWidth = 1100;
+        }
+        else{
+          var parWidth = parent[0].clientWidth;
+        }
 
         d3.csv("static/data.csv", function(d) {
           return {
@@ -34,11 +79,38 @@ class BasinChart extends Component {
             name:d.nombre
           };
         }).then (function (data) {
+
+          if (parWidth > 1000){
+            var ancho = width
+          }
+          else{
+            var ancho = 0.75*width
+          }
+
+          if (parWidth > 1000) {
+            console.log("mayor que mil");
+            var ancho = width
+          } else if (parWidth < 1000 && parWidth > 500) {
+            console.log("menor que mil y mayor que 500");
+            var ancho = 0.75*width
+          } else {
+            console.log("menor");
+            var ancho = 0.3*width;
+            var yticks = -50;
+            var x_heat = -50;
+            var y_heat = 0.7*height;
+            var tooltipLeft = 0;
+            var tooltipTop = 500;
+            var data = data.filter(function(d){return d.date > "2019-05-06 17:40";})
+          
+          }
           var myGroups = d3.map(data, function(d){return d.hour;}).keys()
           var myVars = d3.map(data, function(d){return d.name;}).keys()
           var myColors = d3.map(data, function(d){return d.color;}).keys()
+
+
           var x = d3.scaleBand()
-            .range([ 0, width ])
+            .range([ x_heat, 0.4*ancho]) //grafica
             .domain(myGroups)
             .padding(0.05)
             ;
@@ -56,13 +128,14 @@ class BasinChart extends Component {
               .attr("transform", "rotate(-45)");
 
           var y = d3.scaleBand()
-            .range([ height, 0 ])
+            .range([ y_heat, 0 ])
             .domain(myVars)
             .padding(0.05);
 
           svg.append("g")
             .style("font-size", 15)
             .style("font-weight","bold")
+            .attr("transform", "translate("+yticks+",0)")
             .call(d3.axisLeft(y).tickSize(0))
             .select(".domain").remove()
 
@@ -117,8 +190,8 @@ class BasinChart extends Component {
                             .style("opacity", 0.98);
                         var string = "<img src= " + d.path +  " width= '400' height='500' />";
                         div .html(string) //this will add the image on mouseover
-                            .style("left", (d3.event.pageX + 0) + "px")
-                            .style("top", (d3.event.pageY - 1500) + "px")
+                            .style("left", (d3.event.pageX + tooltipLeft) + "px")
+                            .style("top", (d3.event.pageY - tooltipTop) + "px")
                             .style("font-color", "white");
                       })
             .on("mousemove", mousemove)
@@ -133,7 +206,7 @@ class BasinChart extends Component {
             <div className="chart-title">
               Niveles de riesgo
             </div>
-            <div className="chart-stage">
+            <div id ="risk_container" className="chart-stage">
               <div id = "heatmap">
               </div>
             </div>
