@@ -93,6 +93,15 @@ class BasinChart extends Component {
           } else if (parWidth < 1000 && parWidth > 500) {
             console.log("menor que mil y mayor que 500");
             var ancho = 0.75*width
+          } else if (parWidth < 500 && parWidth > 350) {
+            var ancho = 0.3*width;
+            var yticks = -50;
+            var x_heat = -50;
+            var y_heat = 0.7*height;
+            var tooltipLeft = 0;
+            var tooltipTop = 500;
+            var datelimit = data[data.length-6].date
+            var data = data.filter(function(d){return d.date > datelimit;})
           } else {
             console.log("menor");
             var ancho = 0.3*width;
@@ -101,9 +110,11 @@ class BasinChart extends Component {
             var y_heat = 0.7*height;
             var tooltipLeft = 0;
             var tooltipTop = 500;
-            var data = data.filter(function(d){return d.date > "2019-05-06 17:40";})
-          
+            var datelimit = data[data.length-2].date
+            var data = data.filter(function(d){return d.date == datelimit;})
+
           }
+          console.log(data)
           var myGroups = d3.map(data, function(d){return d.hour;}).keys()
           var myVars = d3.map(data, function(d){return d.name;}).keys()
           var myColors = d3.map(data, function(d){return d.color;}).keys()
