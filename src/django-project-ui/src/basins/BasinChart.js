@@ -90,9 +90,24 @@ class BasinChart extends Component {
           if (parWidth > 1000) {
             console.log("mayor que mil");
             var ancho = width
+            var yticks = -50;
+            var x_heat = -50;
+            var y_heat = 0.8*height;
+            var tooltipLeft = 0;
+            var tooltipTop = 500;
+            var currentdata = data;
+            var rangex = ancho;
           } else if (parWidth < 1000 && parWidth > 500) {
             console.log("menor que mil y mayor que 500");
-            var ancho = 0.75*width
+            var ancho = 0.7*width
+            var yticks = -50;
+            var x_heat = -50;
+            var y_heat = 0.8*height;
+            var tooltipLeft = 0;
+            var tooltipTop = 500;
+            var currentdata = data;
+            var rangex = ancho;
+
           } else if (parWidth < 500 && parWidth > 350) {
             var ancho = 0.3*width;
             var yticks = -50;
@@ -100,6 +115,7 @@ class BasinChart extends Component {
             var y_heat = 0.7*height;
             var tooltipLeft = 0;
             var tooltipTop = 500;
+            var rangex = 0.4*ancho;
             var datelimit = data[data.length-6].date
             var currentdata = data.filter(function(d){return d.date > datelimit;})
           } else {
@@ -108,8 +124,8 @@ class BasinChart extends Component {
             var yticks = -90;
             var x_heat = -90;
             var y_heat = 0.7*height;
-            var tooltipLeft = -10;
-            var tooltipTop = 50;
+            var tooltipLeft = -100;
+            var tooltipTop = -500;
             var rangex = x_heat+50;
 
             var datelimit = data[data.length-1].date
