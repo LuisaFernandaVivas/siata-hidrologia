@@ -93,8 +93,8 @@ class BasinChart extends Component {
             var yticks = -50;
             var x_heat = -50;
             var y_heat = 0.8*height;
-            var tooltipLeft = 0;
-            var tooltipTop = 500;
+            var tooltipLeft = -300;
+            var tooltipTop = 1100;
             var currentdata = data;
             var rangex = ancho;
           } else if (parWidth < 1000 && parWidth > 500) {
