@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block head_title %} {{title}} || {{block.super}} {% endblock head_title %}
+
+{% block content %}
+
+<h1>Crear Estacion</h1>
+{% if form.errors %}
+	{{form.errors}}
+{% endif %}
+
+
+<form method = 'POST'>{% csrf_token %}
+	{{form.as_p}}
+	<button type='submit'>save</button>
+</form>
+
+
+{% if form.instance %}
+<h1>{{form.instance.name}}</h1>
+{% endif %}
+
+{% endblock content %}

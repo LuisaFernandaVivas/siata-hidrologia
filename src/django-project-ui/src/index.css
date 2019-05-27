@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Avenir;
+  width: 100%;
+}
+
+.chart-wrapper {
+  background: #f2f2f2;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-top:10px;
+}
+
+.chart-wrapper .chart-title {
+  border-bottom: 2px solid lightgray;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  background: #055973;
+  padding: 7px 10px 4px;
+}
+
+.chart-wrapper .chart-stage {
+  /*min-height: 240px;*/
+  overflow: hidden;
+  padding: 5px 10px;
+  position: relative;
+}
+
+.chart-wrapper .chart-notes {
+  background: red;
+  border-top: 1px solid #e2e2e2;
+  color: #808080;
+  font-size: 12px;
+  padding: 8px 10px 5px;
+}
+
+.station-title {
+  border-bottom: 1px solid lightgray;
+  color: white;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-size: 22px;
+  font-weight: 500;
+  background: #9dbd52;
+  padding: 7px 40px 4px;
+}
+
+.leaflet-container {
+    height: 570px;
+    width: 540px;
+}
+
+
+.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 400px;
+  height: 50px;
+  padding: 0px;
+  margin-top: 0px;
+  background: white;
+  color: white;
+  font-weight: bold;
+  font-size: 100;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.line {
+  fill: none;
+  stroke: none;
+}
+
+.axisRed line{
+  stroke: red;
+  display: none;
+}
+
+.axisRed path{
+  display: none;
+
+}
+.bnr {
+  width: 100px;
+  height: 518px;
+}
+
+.full-width-div {
+    position: absolute;
+    width: 100%;
+    left: 0;
+}

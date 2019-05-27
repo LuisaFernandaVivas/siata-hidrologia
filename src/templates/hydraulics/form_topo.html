@@ -1,0 +1,54 @@
+{% extends "base_aforos.html" %}
+{% block head_title %} {{title}} || {{block.super}} {% endblock head_title %}
+
+{% block content %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 20%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+{% include 'snippets/icons.html' %}
+{% include 'snippets/form-snippet.html' %}
+{% if topo_objects %}
+<hr/>
+<h4>Gráfica de la sección</h4>
+
+{% if image %}
+<img src="{{image.document.url}}" alt="My image" height = "300" />
+{% endif %}
+<hr/>
+
+<h4>Tabla de resultados</h4>
+<table>
+<tr>
+  <th>Vertical</th>
+  <th>x</th>
+  <th>y</th>
+  <th>Borrar</th>
+
+</tr>
+{% for topo_object in  topo_objects %}
+	<tr>
+		<td><a href = '{{topo_object.get_absolute_url}}'>{{ topo_object.vertical }}</a></td>
+		<td>{{ topo_object.x}}</td>
+    <td>{{ topo_object.y}}</td>
+    <td><a href="{% url 'hydraulics:borrar-topo' pk=topo_object.pk %}"><i class="fa fa-trash"></i></a></td>
+
+{% endfor %}
+</table>
+</ul>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% if form.errors.non_field_errors %}
+	{{form.errors.non_field_errors}}
+{% endif %}
+
+{{ form.media }}
+<form method = 'POST' role="form" class="form-horizontal">{% csrf_token %}
+	{{form.as_p}}
+	<button type='submit' onclick = "return confirm('Se agregará un nuevo registro a la base de datos. Está seguro?')"  >Continuar</button>
+</form>
+
+{% if form.instance %}
+<h1>{{form.instance.name}}</h1>
+{% endif %}

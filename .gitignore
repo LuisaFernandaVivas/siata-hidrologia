@@ -1,4 +1,15 @@
 src/meta/migrations
+share/
+src/hydraulics/migrations/
+static-cdn-local/
+src/uploadfiles/migrations/0001_initial.py
+src/uploadfiles/migrations/
+src/media/
+bin/
+src/meta/migrations/
+src/post/migrations/
+src/data/migrations/
+.gitignore.save
 static-cdn-local/meta_basin.csv
 static-cdn-local/polygon/
 parsed_log.md
@@ -6,6 +17,8 @@ parse_git_log.py
 staticfiles/js/reactify-django.ui.js
 src/staticfiles/js/reactify-django.ui.js
 static-cdn-local/data.csv
+staticfiles/js/django-project-django.ui.js
+src/staticfiles/js/django-project-django.ui.js
 # Node.js related
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 src/data/migrations/
@@ -142,3 +155,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+.README.md.swp

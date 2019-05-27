@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block head_title %} {{title}} || {{block.super}} {% endblock head_title %}
+
+{% block content %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+  .nav > li {
+    float:left;
+  }
+
+
+  .nav li a:hover {
+    background-color:#434343;
+  }
+
+  .nav li ul {
+    display:none;
+    position:absolute;
+    min-width:140px;
+  }
+
+  .nav li:hover > ul {
+    display:block;
+  }
+
+  .nav li ul li {
+    position:relative;
+  }
+
+  .nav li ul li ul {
+    right:-140px;
+    top:0px;
+  }
+
+
+</style>
+
+
+{% include 'snippets/icons.html' %}
+{% include 'snippets/form-snippet.html' %}
+
+<table id='tableData'>
+
+{% if verticales %}
+
+{% load static %}
+<hr/>
+<h4>Gráfica de la sección</h4>
+
+
+{% if image %}
+<img src="{{image.document.url}}" alt="My image" height = "200" />
+{% endif %}
+<h4>Tabla de resultados</h4>
+
+
+<tr>
+  <th>Vertical</th>
+  <th>x</th>
+  <th>y</th>
+	<th>V02</th>
+	<th>V04</th>
+  <th>V08</th>
+	<th>Vsup</th>
+	<th>Vm</th>
+	<th>Área</th>
+	<th>Perímetro</th>
+  <th>Caudal</th>
+  <th>Borrar</th>
+</tr>
+{% for item in  verticales %}
+	<tr>
+		<td><a href = '{{item.get_absolute_url}}'>{{ item.vertical }}</a></td>
+		<td>{{ item.x}}</td>
+    <td>{{ item.y}}</td>
+		<td>{{ item.v02}}</td>
+		<td>{{ item.v04 }}</td>
+    <td>{{ item.v08 }}</td>
+    <td>{{ item.vsup }}</td>
+    <td>{{ item.vm }}</td>
+    <td>{{ item.area_i }}</td>
+    <td>{{ item.perimetro_i}}</td>
+		<td>{{ item.caudal_i}}</td>
+    <td><a href="{% url 'hydraulics:borrar-vertical' pk=item.pk %}"><i class="fa fa-trash"></i></a></td>
+{% endfor %}
+{% endif%}
+<script type="text/javascript" src="{% static 'main.js' %}"></script>
+{% endblock content %}
