@@ -3,12 +3,18 @@
 - Django Rest Framework 3.8.2
 - Django CORS Headers 2.2.0
 - Python 3.5 (and up)
+- virtualenv
+- npm
+- Git
 
 ### Recommended Start
 ```
 Se genera el ambiente virtual, primero descargando virtualen
 
 sudo apt-get install virtualenv
+sudo apt-get install python3 libmysqlclient-dev
+sudo apt install npm
+sudo apt-get install binutils libproj-dev gdal-bin
 
 s un entorno de ejecución para JavaScrip
 
